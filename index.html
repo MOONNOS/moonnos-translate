@@ -7,79 +7,105 @@
 <meta name="description" content="รับแปลภาษา ไทย-อังกฤษ รับรองเอกสารและยื่นนิติกรณ์ที่กรมการกงสุล ให้บริการหัวหิน รับงานทั่วประเทศ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light;
---bg:#f6f1e6;--alt:#efe8d6;--ink:#1b2540;--muted:#565d72;--navy:#1b2a52;--on-navy:#f6f1e6;--gold:#9a6f17;--gold-fill:#c9973a;--line:#d6cdb6;--ph:#f3e7c9}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1526;--alt:#151d36;--ink:#efe9d8;--muted:#a4abc0;--navy:#0a0f1d;--on-navy:#efe9d8;--gold:#e0b455;--gold-fill:#e0b455;--line:#2a3558}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1526;--alt:#151d36;--ink:#efe9d8;--muted:#a4abc0;--navy:#0a0f1d;--on-navy:#efe9d8;--gold:#e0b455;--gold-fill:#e0b455;--line:#2a3558}
+:root{color-scheme:light;
+--bg:#f6f7fa;--surface:#fff;--ink:#0b1b34;--muted:#566078;--navy:#0c1f3d;--navy2:#17386b;--accent:#a67a22;--accent-soft:#f4ecd9;--line:#e3e7ee;--hdbg:rgba(246,247,250,.86);
+--shadow:0 1px 2px rgba(11,27,52,.06),0 10px 28px rgba(11,27,52,.07);--ph:#f3e7c9}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0a1222;--surface:#111c35;--ink:#eef1f6;--muted:#9aa6bd;--navy:#070e1d;--navy2:#12305c;--accent:#d9b25f;--accent-soft:#2a2618;--line:#1f2c4a;--hdbg:rgba(10,18,34,.86);--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0a1222;--surface:#111c35;--ink:#eef1f6;--muted:#9aa6bd;--navy:#070e1d;--navy2:#12305c;--accent:#d9b25f;--accent-soft:#2a2618;--line:#1f2c4a;--hdbg:rgba(10,18,34,.86);--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35)}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Thai",system-ui,sans-serif;font-size:18px;line-height:1.75;-webkit-text-size-adjust:100%}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:20}
-h1,h2,h3{font-family:"Noto Serif Thai",serif;line-height:1.35;margin:0}
-a{color:inherit}.wrap{max-width:960px;margin:0 auto;padding:0 22px}
-:focus-visible{outline:3px solid var(--gold-fill);outline-offset:3px}
-.ph{background:var(--ph);color:#1b2540;padding:0 6px;border-radius:5px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;gap:12px;max-width:960px;margin:0 auto;padding:8px 22px}
-.brand{font-family:"Noto Serif Thai",serif;font-weight:700;font-size:1.25rem;text-decoration:none;white-space:nowrap}.brand span{color:var(--gold)}
-.links{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none}.links::-webkit-scrollbar{display:none}
-.links a{padding:10px 12px;text-decoration:none;font-size:.95rem;white-space:nowrap;color:var(--muted)}
-.chat{background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;padding:10px 18px;border-radius:6px;min-height:48px;display:inline-flex;align-items:center;font-size:.95rem;white-space:nowrap}
-.hero{position:relative;overflow:hidden;padding:56px 0 48px;border-bottom:1px solid var(--line)}
-.moon{position:absolute;right:-50px;top:-30px;width:300px;height:300px;fill:var(--gold-fill);opacity:.2;pointer-events:none}
-.hero .wrap{position:relative}
-.badge{display:inline-block;font-size:.9rem;font-weight:600;letter-spacing:.02em;color:var(--gold);border-bottom:2px solid var(--gold-fill);padding-bottom:2px;margin-bottom:20px}
-.hero h1{font-size:clamp(2.1rem,7vw,3.6rem);font-weight:700;max-width:14em}
-.hero p{color:var(--muted);max-width:34em;margin:20px 0 30px}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Thai",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-text-size-adjust:100%;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+h1,h2,h3{margin:0;line-height:1.3;letter-spacing:-.01em;font-weight:600}
+a{color:inherit}.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.ph{background:var(--ph);color:#0b1b34;padding:0 6px;border-radius:5px}
+.hd{position:sticky;top:0;z-index:50;background:var(--hdbg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.in{display:flex;align-items:center;gap:10px;max-width:1040px;margin:0 auto;padding:10px 22px;position:relative}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto;text-decoration:none;font-weight:700;font-size:1.2rem}
+.brand svg{width:26px;height:26px;fill:var(--accent)}
+.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);padding:6px 22px 14px;box-shadow:var(--shadow)}
+.links.open{display:flex}.links a{padding:14px 0;text-decoration:none;font-weight:500;border-bottom:1px solid var(--line)}
+.chat{background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:0 18px;min-height:46px;display:inline-flex;align-items:center;border-radius:10px;white-space:nowrap}
+.burger{width:46px;height:46px;border:1px solid var(--line);background:var(--surface);border-radius:10px;display:grid;place-content:center;gap:5px;cursor:pointer}
+.burger i{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
+.hero{background:radial-gradient(900px 420px at 88% -10%,var(--navy2),transparent 62%),var(--navy);color:#fff;padding:52px 0 92px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}
+.hgrid{position:relative;display:grid;gap:36px}
+.badge{display:inline-block;font-size:.88rem;font-weight:500;color:#e6c47a;background:rgba(217,178,95,.12);border:1px solid rgba(217,178,95,.35);padding:3px 14px;border-radius:999px;margin-bottom:20px}
+.hero h1{font-size:clamp(2rem,6.4vw,3.3rem);font-weight:600}
+.hero p{color:#b9c4d9;max-width:34em;margin:20px 0 30px}
 .btns{display:flex;flex-direction:column;gap:12px}
-.btn{display:flex;align-items:center;justify-content:center;min-height:56px;padding:12px 24px;border-radius:6px;font-weight:600;font-size:1.05rem;text-decoration:none;text-align:center}
-.btn.solid{background:var(--ink);color:var(--bg)}.btn.line{border:2px solid var(--ink)}
-.btn.gold{background:var(--gold-fill);color:#1b1608}.btn.ghost{border:2px solid var(--on-navy);color:var(--on-navy)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:960px;margin:0 auto}
-.stat{padding:26px 10px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border-right:0}
-.stat b{display:block;font-family:"Noto Serif Thai",serif;font-size:1.3rem;line-height:1.3}
-.stat span{display:block;font-size:.82rem;color:var(--muted);line-height:1.5;margin-top:4px}
-.sec{padding:60px 0}.alt{background:var(--alt)}
-.sh{margin-bottom:30px}h2{font-size:clamp(1.7rem,5vw,2.3rem)}
-h2::after{content:"";display:block;width:56px;height:3px;background:var(--gold-fill);margin-top:12px}
-.lead{color:var(--muted);margin:14px 0 0}
-.svc{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;padding:26px 0;border-top:1px solid var(--line)}
-.svc:last-child{border-bottom:1px solid var(--line)}
-.n{font-family:"Noto Serif Thai",serif;font-size:2rem;color:var(--gold);line-height:1;grid-row:span 3}
-.svc h3{font-size:1.3rem}.svc p{margin:0;color:var(--muted)}
-.price{font-family:"Noto Serif Thai",serif;font-size:1.5rem;font-weight:700;margin-top:6px}
-.price small{font-family:"Noto Sans Thai",sans-serif;font-size:.9rem;font-weight:400;color:var(--muted)}
-ol.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-ol.steps li{counter-increment:s;border-top:3px solid var(--gold-fill);padding-top:12px}
-ol.steps li::before{content:"0" counter(s);font-family:"Noto Serif Thai",serif;font-size:1.6rem;color:var(--gold);display:block}
-ol.steps b{display:block;font-size:1.1rem}ol.steps span{color:var(--muted);font-size:.95rem}
-.receipt{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:26px;max-width:520px}
-.alt .receipt{background:var(--bg)}
-.doc{font-weight:600;margin-bottom:10px}
-.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dotted var(--muted)}
-.row.total{border-bottom:0;font-family:"Noto Serif Thai",serif;font-size:1.4rem;font-weight:700;color:var(--gold);padding-top:16px}
-.note{font-size:.9rem;color:var(--muted);margin-top:12px}
-.pgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.pp{border:1.5px solid var(--ink);border-radius:4px;padding:24px;background:var(--bg)}
-.pp h3{font-size:1.2rem;margin-bottom:8px}.pp .note{border-top:1px solid var(--line);padding-top:10px;margin-top:14px}
-details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;list-style:none;padding:20px 48px 20px 0;font-weight:600;position:relative;min-height:56px}summary::-webkit-details-marker{display:none}
-summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:1.6rem;color:var(--gold);transition:transform .2s}
-details[open] summary::after{transform:translateY(-50%) rotate(45deg)}details p{margin:0;padding:0 0 20px;color:var(--muted)}
-.contact{background:var(--navy);color:var(--on-navy);text-align:center;padding:64px 0}
-.contact h2::after{margin:12px auto 0}.contact p{opacity:.85;margin:14px 0 28px}
-footer{padding:32px 0 44px;font-size:.88rem;color:var(--muted);text-align:center}footer p{margin:0 0 12px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:54px;padding:10px 26px;border-radius:12px;font-weight:600;font-size:1.02rem;text-decoration:none;text-align:center}
+.btn.gold{background:#d9b25f;color:#0c1f3d}.btn.ghost{border:1.5px solid rgba(255,255,255,.35);color:#fff}
+.docs{position:relative;height:230px}
+.sheet{position:absolute;width:64%;background:#f5f7fb;border-radius:14px;padding:18px;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+.sheet.a{left:0;top:0;transform:rotate(-4deg);opacity:.9}.sheet.b{right:0;top:34px;transform:rotate(3deg)}
+.sheet em{font-style:normal;font-size:.74rem;font-weight:700;color:#6b4d0f;background:#f0e2bb;padding:2px 10px;border-radius:999px}
+.sheet i{display:block;height:8px;border-radius:4px;background:#d3daea;margin:11px 0;width:92%}.sheet i.s{width:58%}
+.statbox{position:relative;z-index:2;margin-top:-44px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{padding:22px 10px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border-right:0}
+.stat b{display:block;font-size:1.2rem;line-height:1.35;font-weight:600}
+.stat span{display:block;font-size:.8rem;color:var(--muted);line-height:1.5;margin-top:4px}
+.sec{padding:68px 0}.alt{background:var(--surface);border-block:1px solid var(--line)}
+.sh{margin-bottom:34px}.sh h2{font-size:clamp(1.6rem,4.6vw,2.2rem)}
+.sh h2::before{content:"";display:block;width:36px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:16px}
+.lead{color:var(--muted);margin:12px 0 0;max-width:36em}
+.grid3{display:grid;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.ico{width:48px;height:48px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;margin-bottom:16px}
+.ico svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.2rem;margin-bottom:8px}.card p{margin:0 0 18px;color:var(--muted);font-size:.96rem}
+.price{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:1.5rem;font-weight:700}
+.price small{font-size:.88rem;font-weight:400;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.stp{position:relative;padding-left:60px}
+.stp .n{position:absolute;left:0;top:0;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-weight:600;background:var(--surface)}
+.stp b{display:block;font-size:1.08rem;padding-top:7px;font-weight:600}.stp span{color:var(--muted);font-size:.95rem}
+.receipt{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px;max-width:560px}
+.doc{font-weight:600;margin-bottom:8px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.row.total{border-bottom:0;font-size:1.4rem;font-weight:700;color:var(--accent);padding-top:16px}
+.note{font-size:.88rem;color:var(--muted);margin-top:12px}
+.pp h3{margin-bottom:10px}.pp .note{margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.pp p{margin:0 0 14px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:12px}
+summary{cursor:pointer;list-style:none;padding:18px 54px 18px 22px;font-weight:600;position:relative;min-height:58px}summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:22px;top:50%;width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}details p{margin:0;padding:0 22px 20px;color:var(--muted)}
+.contact{background:radial-gradient(700px 320px at 50% 0,var(--navy2),transparent 70%),var(--navy);color:#fff;text-align:center;padding:72px 0}
+.contact h2{font-size:clamp(1.7rem,5vw,2.4rem)}.contact p{color:#b9c4d9;margin:14px 0 30px}
+footer{padding:32px 0 36px;font-size:.86rem;color:var(--muted);text-align:center}footer p{margin:0 0 12px}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hdbg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.dock a{flex:1;min-height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;text-decoration:none}
+.dock .l{background:var(--navy);color:#fff}.dock .t{border:1.5px solid var(--line);background:var(--surface)}
+.contact .btns{justify-content:center}.logo{height:34px;width:auto;display:block}
+.cgrid{display:grid;gap:34px;align-items:center;justify-items:center}
+.qr{background:#fff;color:#0c1f3d;border-radius:20px;padding:16px 16px 14px;width:236px;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,.3)}
+.qr img{display:block;width:100%;height:auto;border-radius:8px}.qr span{display:block;font-size:.86rem;font-weight:600;margin-top:10px}
 .err{padding:40px 22px;text-align:center}
-@media(min-width:640px){.btns{flex-direction:row}.btn{flex:1;max-width:280px}.contact .btns{justify-content:center}.moon{width:420px;height:420px;right:-30px}}
+@media(min-width:640px){.btns{flex-direction:row}.btn{min-width:230px}.grid3{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){
+ body{padding-bottom:0}.dock{display:none}.burger{display:none}
+ .links{display:flex;position:static;flex-direction:row;gap:6px;background:none;border:0;box-shadow:none;padding:0}.links a{padding:10px 14px;border:0;color:var(--muted);font-size:.95rem}
+ .hgrid{grid-template-columns:1.15fr .85fr;align-items:center}.docs{height:300px}.hero{padding:76px 0 112px}
+ .grid3{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(4,1fr)}
+ .cgrid{grid-template-columns:1.2fr .8fr;text-align:left;justify-items:stretch}.cgrid .qr{justify-self:center}.contact .btns{justify-content:flex-start}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}summary::after{transition:none}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
+const QR = "line-qr.jpg";
 const PH = /(\[[^\]]+\])/;
+const ICONS = {
+  document: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+  translate: '<path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 7 8M12 5c0 3-3 7-8 9"/><path d="M13 21l4-9 4 9M14.5 18h5"/>',
+  shield: '<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>'
+};
 function txt(s) {
   const f = document.createDocumentFragment();
   String(s).split(PH).forEach((p) => {
@@ -112,38 +138,49 @@ function sec(id, c, alt) {
 function render(c) {
   const app = document.getElementById("app");
   app.textContent = "";
-  const header = el("header"), nav = el("div", "nav"), brand = el("a", "brand", null, { href: "#top" });
-  brand.append(c.brand[0], el("span", null, c.brand[1]));
-  const links = el("nav", "links", null, { "aria-label": "เมนูหลัก" });
+
+  const hd = el("header", "hd"), inn = el("div", "in");
+  const brand = el("a", "brand", null, { href: "#top" });
+  if (c.logo) { const lg = el("img", "logo", null, { src: c.logo, alt: c.brand.join("") }); brand.append(lg); }
+  else { brand.innerHTML = '<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M120 15A85 85 0 1 0 185 125A68 68 0 1 1 120 15Z"/></svg>'; brand.append(c.brand.join("")); }
+  const links = el("nav", "links", null, { "aria-label": "เมนูหลัก", id: "menu" });
   c.nav.forEach((n) => links.append(el("a", null, n.label, { href: n.href })));
-  nav.append(brand, links, el("a", "chat", c.nav_cta, { href: c.line_url }));
-  header.append(nav);
+  const burger = el("button", "burger", null, { type: "button", "aria-label": "เมนู", "aria-expanded": "false", "aria-controls": "menu" });
+  burger.innerHTML = "<i></i><i></i><i></i>";
+  burger.onclick = () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", String(o)); };
+  links.addEventListener("click", (e) => { if (e.target.tagName === "A") { links.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); } });
+  inn.append(brand, links, el("a", "chat", c.nav_cta, { href: c.line_url }), burger);
+  hd.append(inn);
 
   const main = el("main", null, null, { id: "top" });
-  const hero = el("div", "hero"), hw = el("div", "wrap"), hb = el("div", "btns");
-  hero.innerHTML = '<svg class="moon" viewBox="0 0 200 200" aria-hidden="true"><path d="M120 15A85 85 0 1 0 185 125A68 68 0 1 1 120 15Z"/></svg>';
-  hb.append(el("a", "btn solid", c.hero.primary, { href: c.line_url }), el("a", "btn line", c.hero.secondary.label, { href: c.hero.secondary.href }));
-  hw.append(el("span", "badge", c.hero.badge), el("h1", null, c.hero.title), el("p", null, c.hero.text), hb);
-  hero.append(hw);
-  const stats = el("div", "stats");
-  c.stats.forEach((s) => { const d = el("div", "stat"); d.append(el("b", null, s.big), el("span", null, s.small)); stats.append(d); });
-  main.append(hero, stats);
+  const hero = el("div", "hero"), hw = el("div", "wrap hgrid"), left = el("div"), hb = el("div", "btns");
+  hb.append(el("a", "btn gold", c.hero.primary, { href: c.line_url }), el("a", "btn ghost", c.hero.secondary.label, { href: c.hero.secondary.href }));
+  left.append(el("span", "badge", c.hero.badge), el("h1", null, c.hero.title), el("p", null, c.hero.text), hb);
+  const docs = el("div", "docs", null, { "aria-hidden": "true" });
+  docs.innerHTML = '<div class="sheet a"><em>TH</em><i></i><i></i><i class="s"></i><i></i></div><div class="sheet b"><em>EN</em><i></i><i></i><i class="s"></i><i></i></div>';
+  hw.append(left, docs); hero.append(hw);
+
+  const sw = el("div", "wrap"), sb = el("div", "statbox");
+  c.stats.forEach((s) => { const d = el("div", "stat"); d.append(el("b", null, s.big), el("span", null, s.small)); sb.append(d); });
+  sw.append(sb);
+  main.append(hero, sw);
 
   let [s, w] = sec("services", c.services);
-  c.services.items.forEach((it, i) => {
-    const r = el("div", "svc");
-    r.append(el("span", "n", "0" + (i + 1)), el("h3", null, it.title), el("p", null, it.text), priceEl(it));
-    w.append(r);
+  const g = el("div", "grid3");
+  c.services.items.forEach((it) => {
+    const card = el("div", "card rv"), ico = el("div", "ico");
+    ico.innerHTML = '<svg viewBox="0 0 24 24">' + (ICONS[it.icon] || ICONS.document) + "</svg>";
+    card.append(ico, el("h3", null, it.title), el("p", null, it.text), priceEl(it)); g.append(card);
   });
-  main.append(s);
+  w.append(g); main.append(s);
 
   [s, w] = sec("steps", c.steps, true);
   const ol = el("ol", "steps");
-  c.steps.items.forEach((it) => { const li = el("li"); li.append(el("b", null, it.title), el("span", null, it.text)); ol.append(li); });
+  c.steps.items.forEach((it, i) => { const li = el("li", "stp rv"); li.append(el("span", "n", String(i + 1)), el("b", null, it.title), el("span", null, it.text)); ol.append(li); });
   w.append(ol); main.append(s);
 
   [s, w] = sec("example", c.example);
-  const rc = el("div", "receipt");
+  const rc = el("div", "receipt rv");
   rc.append(el("div", "doc", c.example.doc));
   c.example.rows.forEach((r) => { const d = el("div", "row"); d.append(el("span", null, r[0]), el("span", null, r[1])); rc.append(d); });
   const t = el("div", "row total"); t.append(el("span", null, c.example.total[0]), el("span", null, c.example.total[1]));
@@ -151,35 +188,43 @@ function render(c) {
   rc.append(t, n); w.append(rc); main.append(s);
 
   [s, w] = sec("pricing", c.pricing, true);
-  const pg = el("div", "pgrid");
+  const pg = el("div", "grid3");
   c.pricing.items.forEach((it) => {
-    const p = el("div", "pp");
+    const p = el("div", "card pp rv");
     p.append(el("h3", null, it.title));
     if (it.lines) {
-      const q = el("p"); q.style.margin = "0";
+      const q = el("p");
       it.lines.forEach((l, i) => { if (i) q.append(document.createElement("br")); q.append(l[0] + " "); q.append(el("b", null, l[1])); });
       p.append(q);
-    } else p.append(priceEl(it));
+    } else { const pr = priceEl(it); pr.style.border = "0"; pr.style.paddingTop = "0"; pr.style.marginTop = "0"; pr.style.marginBottom = "14px"; p.append(pr); }
     p.append(el("div", "note", c.pricing.note)); pg.append(p);
   });
   w.append(pg); main.append(s);
 
   [s, w] = sec("faq", c.faq);
-  c.faq.items.forEach((it) => { const d = el("details"); d.append(el("summary", null, it.q), el("p", null, it.a)); w.append(d); });
+  c.faq.items.forEach((it) => { const d = el("details", "rv"); d.append(el("summary", null, it.q), el("p", null, it.a)); w.append(d); });
   main.append(s);
 
-  const ct = el("section", "contact", null, { id: "contact" }), cw = el("div", "wrap"), cb = el("div", "btns");
+  const ct = el("section", "contact", null, { id: "contact" }), cw = el("div", "wrap cgrid"), cl = el("div"), cb = el("div", "btns");
   cb.append(el("a", "btn gold", c.contact.line_label, { href: c.line_url }), el("a", "btn ghost", c.contact.phone_label, { href: c.contact.phone_href }));
-  cw.append(el("h2", null, c.contact.title), el("p", null, c.contact.text), cb); ct.append(cw); main.append(ct);
+  cl.append(el("h2", null, c.contact.title), el("p", null, c.contact.text), cb);
+  const qr = el("div", "qr"), qi = el("img", null, null, { src: QR, alt: "QR code สำหรับเพิ่มเพื่อน LINE" });
+  qr.append(qi, el("span", null, "สแกนเพื่อเพิ่มเพื่อน LINE"));
+  cw.append(cl, qr); ct.append(cw); main.append(ct);
 
   const f = el("footer"), fw = el("div", "wrap"), fb = el("p"), F = c.footer;
   if (F.facebook_url) fb.append(el("a", null, F.facebook_label, { href: F.facebook_url, target: "_blank", rel: "noopener" }));
   else fb.append(el("span", "ph", F.facebook_placeholder));
   fw.append(fb, el("p", null, F.disclaimer), el("p", null, F.copyright)); f.append(fw);
-  app.append(header, main, f);
+
+  const dock = el("div", "dock");
+  dock.append(el("a", "l", "ทักแชต LINE", { href: c.line_url }), el("a", "t", "โทร", { href: c.contact.phone_href }));
+
+  app.append(hd, main, f, dock);
+
 }
 fetch("content.json", { cache: "no-cache" }).then((r) => r.json()).then(render).catch(() => {
-  document.getElementById("app").innerHTML = '<p class="err">โหลด content.json ไม่ได้ หากเปิดไฟล์จากเครื่องโดยตรงจะเป็นแบบนี้ กรุณาเปิดผ่านเว็บที่อัปโหลดแล้ว หรือตรวจว่า content.json เขียนถูกรูปแบบ</p>';
+  document.getElementById("app").innerHTML = '<p class="err">โหลด content.json ไม่ได้ กรุณาตรวจว่าไฟล์ content.json อยู่ในโฟลเดอร์เดียวกับ index.html และเขียนถูกรูปแบบ</p>';
 });
 </script>
 </body>
