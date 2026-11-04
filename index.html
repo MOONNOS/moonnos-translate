@@ -80,10 +80,11 @@ footer{padding:32px 0 36px;font-size:.86rem;color:var(--muted);text-align:center
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hdbg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .dock a{flex:1;min-height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;text-decoration:none}
 .dock .l{background:var(--navy);color:#fff}.dock .t{border:1.5px solid var(--line);background:var(--surface)}
-.contact .btns{justify-content:center}.logo{height:34px;width:auto;display:block}
+.contact .btns{justify-content:center}.logo{height:40px;width:auto;display:block;border-radius:10px}
 .cgrid{display:grid;gap:34px;align-items:center;justify-items:center}
 .qr{background:#fff;color:#0c1f3d;border-radius:20px;padding:16px 16px 14px;width:236px;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,.3)}
 .qr img{display:block;width:100%;height:auto;border-radius:8px}.qr span{display:block;font-size:.86rem;font-weight:600;margin-top:10px}
+.flogo{width:150px;margin:0 auto 18px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.flogo img{display:block;width:100%;height:auto}
 .err{padding:40px 22px;text-align:center}
 @media(min-width:640px){.btns{flex-direction:row}.btn{min-width:230px}.grid3{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:900px){
@@ -100,6 +101,8 @@ footer{padding:32px 0 36px;font-size:.86rem;color:var(--muted);text-align:center
 <div id="app"></div>
 <script>
 const QR = "line-qr.jpg";
+const LOGO_MARK = "logo-mark.jpg";
+const LOGO_FULL = "logo.jpg";
 const PH = /(\[[^\]]+\])/;
 const ICONS = {
   document: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
@@ -141,8 +144,9 @@ function render(c) {
 
   const hd = el("header", "hd"), inn = el("div", "in");
   const brand = el("a", "brand", null, { href: "#top" });
-  if (c.logo) { const lg = el("img", "logo", null, { src: c.logo, alt: c.brand.join("") }); brand.append(lg); }
-  else { brand.innerHTML = '<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M120 15A85 85 0 1 0 185 125A68 68 0 1 1 120 15Z"/></svg>'; brand.append(c.brand.join("")); }
+  const lg = el("img", "logo", null, { src: LOGO_MARK, alt: "" });
+  lg.onerror = () => lg.remove();
+  brand.append(lg, c.brand.join(""));
   const links = el("nav", "links", null, { "aria-label": "เมนูหลัก", id: "menu" });
   c.nav.forEach((n) => links.append(el("a", null, n.label, { href: n.href })));
   const burger = el("button", "burger", null, { type: "button", "aria-label": "เมนู", "aria-expanded": "false", "aria-controls": "menu" });
@@ -215,7 +219,9 @@ function render(c) {
   const f = el("footer"), fw = el("div", "wrap"), fb = el("p"), F = c.footer;
   if (F.facebook_url) fb.append(el("a", null, F.facebook_label, { href: F.facebook_url, target: "_blank", rel: "noopener" }));
   else fb.append(el("span", "ph", F.facebook_placeholder));
-  fw.append(fb, el("p", null, F.disclaimer), el("p", null, F.copyright)); f.append(fw);
+  const fl = el("div", "flogo"), fi = el("img", null, null, { src: LOGO_FULL, alt: "MOONNOS" });
+  fi.onerror = () => fl.remove(); fl.append(fi);
+  fw.append(fl, fb, el("p", null, F.disclaimer), el("p", null, F.copyright)); f.append(fw);
 
   const dock = el("div", "dock");
   dock.append(el("a", "l", "ทักแชต LINE", { href: c.line_url }), el("a", "t", "โทร", { href: c.contact.phone_href }));
