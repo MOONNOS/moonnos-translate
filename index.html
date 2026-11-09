@@ -88,13 +88,6 @@ footer{padding:32px 0 36px;font-size:.86rem;color:var(--muted);text-align:center
 .lmenu[hidden]{display:none}
 .lmenu button{font:inherit;display:flex;align-items:center;gap:12px;width:100%;min-height:46px;padding:0 12px;border:0;border-radius:8px;background:none;color:var(--ink);cursor:pointer;text-align:left}
 .lmenu button:hover,.lmenu button[aria-current="true"]{background:var(--accent-soft);font-weight:600}
-.qm{position:fixed;inset:0;z-index:100;background:rgba(5,10,20,.72);display:grid;place-items:center;padding:20px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.qm[hidden]{display:none}
-.qc{position:relative;background:#fff;color:#0c1f3d;border-radius:22px;padding:22px 22px 20px;width:min(100%,340px);text-align:center;box-shadow:0 30px 60px rgba(0,0,0,.45)}
-.qc img{display:block;width:100%;height:auto;border-radius:10px}
-.qc p{margin:14px 0 14px;font-weight:600;line-height:1.5}
-.qc .go{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:12px;background:#0c1f3d;color:#fff;text-decoration:none;font-weight:600}
-.qc .x{position:absolute;top:-14px;right:-6px;width:44px;height:44px;border-radius:50%;border:0;background:#d9b25f;color:#0c1f3d;font-size:1.5rem;line-height:1;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.35)}
 @media(max-width:639px){.chat{display:none}}
 .contact .btns{justify-content:center}.logo{height:40px;width:auto;display:block;border-radius:10px}
 .cgrid{display:grid;gap:34px;align-items:center;justify-items:center}
@@ -174,25 +167,6 @@ const FLAGS = {
 };
 document.addEventListener("click", (e) => { const m = document.querySelector(".lmenu"); if (m && !m.hidden && !e.target.closest(".lm")) { m.hidden = true; const b = document.querySelector(".lmb"); if (b) b.setAttribute("aria-expanded", "false"); } });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") { const m = document.querySelector(".lmenu"); if (m && !m.hidden) { m.hidden = true; const b = document.querySelector(".lmb"); if (b) { b.setAttribute("aria-expanded", "false"); b.focus(); } } } });
-const QRTXT = { th: { open: "เปิดใน LINE", close: "ปิด" }, en: { open: "Open in LINE", close: "Close" }, zh: { open: "在 LINE 中打开", close: "关闭" } };
-let QM = null;
-function showQR(c) {
-  const u = c.ui, t = QRTXT[LANG] || QRTXT.th;
-  if (!QM) {
-    QM = el("div", "qm", null, { role: "dialog", "aria-modal": "true" }); QM.hidden = true;
-    QM.addEventListener("click", (e) => { if (e.target === QM) QM.hidden = true; });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && QM && !QM.hidden) QM.hidden = true; });
-    document.body.append(QM);
-  }
-  QM.textContent = "";
-  const card = el("div", "qc"), x = el("button", "x", "×", { type: "button", "aria-label": t.close });
-  x.onclick = () => { QM.hidden = true; };
-  const im = el("img", null, null, { src: QR, alt: u.qr_alt });
-  const go = el("a", "go", t.open, { href: c.line_url, target: "_blank", rel: "noopener" });
-  card.append(x, im, el("p", null, u.qr_cap), go);
-  QM.append(card); QM.hidden = false; x.focus();
-}
-function bindQR(a, c) { a.addEventListener("click", (e) => { e.preventDefault(); showQR(c); }); }
 const LANGS = { th: { file: "content.json", loc: "th-TH", name: "ไทย" }, en: { file: "content.en.json", loc: "en-GB", name: "English" }, zh: { file: "content.zh.json", loc: "zh-CN", name: "中文" } };
 let LANG = "th";
 function TH(s) {
@@ -283,14 +257,12 @@ function render(c) {
   });
   lb.onclick = () => { lmenu.hidden = !lmenu.hidden; lb.setAttribute("aria-expanded", String(!lmenu.hidden)); };
   lm.append(lb, lmenu);
-  const chatA = el("a", "chat", c.nav_cta, { href: c.line_url }); bindQR(chatA, c);
-  inn.append(brand, links, lm, chatA, burger);
+  inn.append(brand, links, lm, el("a", "chat", c.nav_cta, { href: c.line_url }), burger);
   hd.append(inn);
 
   const main = el("main", null, null, { id: "top" });
   const hero = el("div", "hero"), hw = el("div", "wrap hgrid"), left = el("div"), hb = el("div", "btns");
-  const heroA = el("a", "btn gold", c.hero.primary, { href: c.line_url }); bindQR(heroA, c);
-  hb.append(heroA, el("a", "btn ghost", c.hero.secondary.label, { href: c.hero.secondary.href }));
+  hb.append(el("a", "btn gold", c.hero.primary, { href: c.line_url }), el("a", "btn ghost", c.hero.secondary.label, { href: c.hero.secondary.href }));
   left.append(el("span", "badge", c.hero.badge), el("h1", null, c.hero.title), el("p", null, c.hero.text), hb);
   const docs = el("div", "docs", null, { "aria-hidden": "true" });
   docs.innerHTML = '<div class="sheet a"><em>TH</em><i></i><i></i><i class="s"></i><i></i></div><div class="sheet b"><em>EN</em><i></i><i></i><i class="s"></i><i></i></div>';
@@ -344,8 +316,7 @@ function render(c) {
   main.append(s);
 
   const ct = el("section", "contact", null, { id: "contact" }), cw = el("div", "wrap cgrid"), cl = el("div"), cb = el("div", "btns");
-  const lineA = el("a", "btn gold", c.contact.line_label, { href: c.line_url }); bindQR(lineA, c);
-  cb.append(lineA, el("a", "btn ghost", c.contact.phone_label, { href: c.contact.phone_href }));
+  cb.append(el("a", "btn gold", c.contact.line_label, { href: c.line_url }), el("a", "btn ghost", c.contact.phone_label, { href: c.contact.phone_href }));
   cl.append(el("h2", null, c.contact.title), el("p", null, c.contact.text), cb);
   const qr = el("div", "qr"), qi = el("img", null, null, { src: QR, alt: u.qr_alt });
   qr.append(qi, el("span", null, u.qr_cap));
@@ -359,8 +330,7 @@ function render(c) {
   fw.append(fl, fb, el("p", null, F.disclaimer), el("p", null, F.copyright)); f.append(fw);
 
   const dock = el("div", "dock");
-  const dockA = el("a", "l", u.dock_line, { href: c.line_url }); bindQR(dockA, c);
-  dock.append(dockA, el("a", "t", u.dock_call, { href: c.contact.phone_href }));
+  dock.append(el("a", "l", u.dock_line, { href: c.line_url }), el("a", "t", u.dock_call, { href: c.contact.phone_href }));
 
   app.append(hd, main, f, dock);
 
