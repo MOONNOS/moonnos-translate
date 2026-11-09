@@ -1,25 +1,52 @@
 {
-  "brand": ["Moon", "nos"],
+  "brand": [
+    "moonnos",
+    " translate"
+  ],
   "line_url": "https://line.me/ti/p/YMKzfLDNT4",
   "booking_api": "https://moonnos-booking.onrender.com/api/booking",
   "nav": [
-    { "label": "Services", "href": "#services" },
-    { "label": "How it works", "href": "#steps" },
-    { "label": "Pricing", "href": "#pricing" },
-    { "label": "FAQ", "href": "#faq" }
+    {
+      "label": "Services",
+      "href": "#services"
+    },
+    {
+      "label": "How it works",
+      "href": "#steps"
+    },
+    {
+      "label": "Pricing",
+      "href": "#pricing"
+    },
+    {
+      "label": "FAQ",
+      "href": "#faq"
+    }
   ],
   "nav_cta": "Chat on LINE",
   "hero": {
-    "badge": "Moonnos · Translation & document certification",
+    "badge": "moonnos translate",
     "title": "Document translation, legalization and certified copies, all in one place",
     "text": "We translate official, academic and legal documents (Thai–English) and handle legalization filings at the Department of Consular Affairs. Based in Hua Hin, serving clients nationwide, with delivery by EMS.",
     "primary": "Free consultation and price estimate",
-    "secondary": { "label": "See pricing", "href": "#pricing" }
+    "secondary": {
+      "label": "See pricing",
+      "href": "#pricing"
+    }
   },
   "stats": [
-    { "big": "3 services", "small": "All in one place" },
-    { "big": "3–4 working days", "small": "Legalization filing (normal)" },
-    { "big": "Free", "small": "Consultation and scanned PDF" }
+    {
+      "big": "3 services",
+      "small": "All in one place"
+    },
+    {
+      "big": "3–4 working days",
+      "small": "Legalization filing (normal)"
+    },
+    {
+      "big": "Free",
+      "small": "Consultation and scanned PDF"
+    }
   ],
   "services": {
     "title": "Our services",
@@ -53,18 +80,42 @@
     "title": "How it works",
     "lead": "Four simple steps, all done through chat",
     "items": [
-      { "title": "Send your documents", "text": "Send photos or files of your documents via chat" },
-      { "title": "Receive a quotation", "text": "We send a quotation and the timeline" },
-      { "title": "Pay and we start", "text": "We review the draft translation with you before the final version" },
-      { "title": "Receive your documents", "text": "Receive documents and a PDF by EMS, or pick them up in person" }
+      {
+        "title": "Send your documents",
+        "text": "Send photos or files of your documents via chat"
+      },
+      {
+        "title": "Receive a quotation",
+        "text": "We send a quotation and the timeline"
+      },
+      {
+        "title": "Pay and we start",
+        "text": "We review the draft translation with you before the final version"
+      },
+      {
+        "title": "Receive your documents",
+        "text": "Receive documents and a PDF by EMS, or pick them up in person"
+      }
     ]
   },
   "example": {
     "title": "Pricing example",
     "lead": "A quick look before you chat with us",
     "doc": "Marriage certificate, 1 page: translation and legalization",
-    "rows": [["Translation", "300 THB"], ["Legalization filing service", "1,500 THB"]],
-    "total": ["Total", "1,800 THB"],
+    "rows": [
+      [
+        "Translation",
+        "300 THB"
+      ],
+      [
+        "Legalization filing service",
+        "1,500 THB"
+      ]
+    ],
+    "total": [
+      "Total",
+      "1,800 THB"
+    ],
     "note": "+ government fees at the agency's official rates",
     "disclaimer": "Note: this is only an example. Actual prices depend on the language, number of pages and the agency's requirements."
   },
@@ -73,20 +124,56 @@
     "lead": "We confirm the price for every service before work starts",
     "note": "Government fees not included",
     "items": [
-      { "title": "Certified copies", "prefix": "From", "price": "700", "unit": "THB / job" },
-      { "title": "Translation", "lines": [["General documents", "300 THB/page"], ["Legal documents", "500 THB/page"]] },
-      { "title": "Legalization filing", "price": "1,500", "unit": "THB" }
+      {
+        "title": "Certified copies",
+        "prefix": "From",
+        "price": "700",
+        "unit": "THB / job"
+      },
+      {
+        "title": "Translation",
+        "lines": [
+          [
+            "General documents",
+            "300 THB/page"
+          ],
+          [
+            "Legal documents",
+            "500 THB/page"
+          ]
+        ]
+      },
+      {
+        "title": "Legalization filing",
+        "price": "1,500",
+        "unit": "THB"
+      }
     ]
   },
   "faq": {
     "title": "FAQ",
     "lead": "Tap a question to see the answer",
     "items": [
-      { "q": "Can I send photos from my phone?", "a": "Yes, as long as all the text is complete and clear." },
-      { "q": "How is the price calculated?", "a": "By language, document type and number of pages. We always tell you the price before work starts." },
-      { "q": "Do my documents need to be certified?", "a": "It depends on the agency and the destination country, so please check with the destination first. If you send us the list of documents, we are happy to take a quick look." },
-      { "q": "How do you send documents outside Hua Hin?", "a": "By EMS nationwide, and we send a PDF file as well." },
-      { "q": "Personal information in my documents", "a": "[This text will be added later]" }
+      {
+        "q": "Can I send photos from my phone?",
+        "a": "Yes, as long as all the text is complete and clear."
+      },
+      {
+        "q": "How is the price calculated?",
+        "a": "By language, document type and number of pages. We always tell you the price before work starts."
+      },
+      {
+        "q": "Do my documents need to be certified?",
+        "a": "It depends on the agency and the destination country, so please check with the destination first. If you send us the list of documents, we are happy to take a quick look."
+      },
+      {
+        "q": "How do you send documents outside Hua Hin?",
+        "a": "By EMS nationwide, and we send a PDF file as well."
+      },
+      {
+        "q": "Personal information in my documents",
+        "a": "[This text will be added later]"
+      }
     ]
   },
   "contact": {
