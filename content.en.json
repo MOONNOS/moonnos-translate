@@ -1,0 +1,147 @@
+{
+  "brand": ["Moon", "nos"],
+  "line_url": "https://line.me/ti/p/YMKzfLDNT4",
+  "booking_api": "https://moonnos-booking.onrender.com/api/booking",
+  "nav": [
+    { "label": "Services", "href": "#services" },
+    { "label": "How it works", "href": "#steps" },
+    { "label": "Pricing", "href": "#pricing" },
+    { "label": "FAQ", "href": "#faq" }
+  ],
+  "nav_cta": "Chat on LINE",
+  "hero": {
+    "badge": "Moonnos · Translation & document certification",
+    "title": "Document translation, legalization and certified copies, all in one place",
+    "text": "We translate official, academic and legal documents (Thai–English) and handle legalization filings at the Department of Consular Affairs. Based in Hua Hin, serving clients nationwide, with delivery by EMS.",
+    "primary": "Free consultation and price estimate",
+    "secondary": { "label": "See pricing", "href": "#pricing" }
+  },
+  "stats": [
+    { "big": "3 services", "small": "All in one place" },
+    { "big": "3–4 working days", "small": "Legalization filing (normal)" },
+    { "big": "Free", "small": "Consultation and scanned PDF" }
+  ],
+  "services": {
+    "title": "Our services",
+    "lead": "Use them separately or together, whatever your documents need.",
+    "items": [
+      {
+        "icon": "document",
+        "title": "Certified copies of records",
+        "text": "We obtain copies at the district office on your behalf, such as birth and death certificates, house registration, name-change records, marriage/divorce registrations, certificates of single status and parental authority certificates (Por.Kor.14).",
+        "prefix": "From",
+        "price": "700",
+        "unit": "THB / job"
+      },
+      {
+        "icon": "translate",
+        "title": "Document translation",
+        "text": "General documents 300 THB/page, legal documents 500 THB/page. We check names, numbers and dates against the original, and you review the draft before we prepare the final version.",
+        "price": "300–500",
+        "unit": "THB / page"
+      },
+      {
+        "icon": "shield",
+        "title": "Legalization filing (document certification)",
+        "text": "We check your documents, book the queue and file them at the Department of Consular Affairs on your behalf. It usually takes about 3–4 working days.",
+        "price": "1,500",
+        "unit": "THB"
+      }
+    ]
+  },
+  "steps": {
+    "title": "How it works",
+    "lead": "Four simple steps, all done through chat",
+    "items": [
+      { "title": "Send your documents", "text": "Send photos or files of your documents via chat" },
+      { "title": "Receive a quotation", "text": "We send a quotation and the timeline" },
+      { "title": "Pay and we start", "text": "We review the draft translation with you before the final version" },
+      { "title": "Receive your documents", "text": "Receive documents and a PDF by EMS, or pick them up in person" }
+    ]
+  },
+  "example": {
+    "title": "Pricing example",
+    "lead": "A quick look before you chat with us",
+    "doc": "Marriage certificate, 1 page: translation and legalization",
+    "rows": [["Translation", "300 THB"], ["Legalization filing service", "1,500 THB"]],
+    "total": ["Total", "1,800 THB"],
+    "note": "+ government fees at the agency's official rates",
+    "disclaimer": "Note: this is only an example. Actual prices depend on the language, number of pages and the agency's requirements."
+  },
+  "pricing": {
+    "title": "Packages and prices",
+    "lead": "We confirm the price for every service before work starts",
+    "note": "Government fees not included",
+    "items": [
+      { "title": "Certified copies", "prefix": "From", "price": "700", "unit": "THB / job" },
+      { "title": "Translation", "lines": [["General documents", "300 THB/page"], ["Legal documents", "500 THB/page"]] },
+      { "title": "Legalization filing", "price": "1,500", "unit": "THB" }
+    ]
+  },
+  "faq": {
+    "title": "FAQ",
+    "lead": "Tap a question to see the answer",
+    "items": [
+      { "q": "Can I send photos from my phone?", "a": "Yes, as long as all the text is complete and clear." },
+      { "q": "How is the price calculated?", "a": "By language, document type and number of pages. We always tell you the price before work starts." },
+      { "q": "Do my documents need to be certified?", "a": "It depends on the agency and the destination country, so please check with the destination first. If you send us the list of documents, we are happy to take a quick look." },
+      { "q": "How do you send documents outside Hua Hin?", "a": "By EMS nationwide, and we send a PDF file as well." },
+      { "q": "Personal information in my documents", "a": "[This text will be added later]" }
+    ]
+  },
+  "contact": {
+    "title": "Ready to look at your documents",
+    "text": "Send a photo of your documents for a price estimate. No consultation fee.",
+    "line_label": "LINE ID: parker.n1",
+    "phone_label": "Call 095-180-2546",
+    "phone_href": "tel:0951802546"
+  },
+  "footer": {
+    "facebook_url": "https://web.facebook.com/profile.php?id=61594946850776",
+    "facebook_placeholder": "[Facebook page link]",
+    "facebook_label": "Facebook page",
+    "disclaimer": "Moonnos acts on behalf of customers and is not a government agency. Requirements differ by country and by agency, so always check with the destination agency.",
+    "copyright": "© Moonnos · Translation & document certification"
+  },
+  "ui": {
+    "html_lang": "en",
+    "title": "Moonnos | Translation & Document Certification | Hua Hin",
+    "desc": "Thai–English translation, document certification and legalization filing at the Department of Consular Affairs. Based in Hua Hin, serving clients nationwide.",
+    "menu_aria": "Main menu",
+    "burger_aria": "Menu",
+    "lang_aria": "Choose language",
+    "booking_nav": "Book a slot",
+    "bk_title": "Book a filing day",
+    "bk_lead": "Choose an open date and fill in your details. Remaining slots for each day are shown.",
+    "bk_step1": "1. Choose a day",
+    "bk_step2": "2. Your details",
+    "bk_loading": "Loading open dates...",
+    "bk_none": "No dates are open right now. Please message us to ask.",
+    "bk_load_err": "Could not load dates. Please try again or message us instead.",
+    "f_name": "Full name",
+    "f_phone": "Phone number",
+    "f_line": "LINE ID (optional)",
+    "f_note": "Documents to file, or extra details (optional)",
+    "f_hp": "Do not fill in this field",
+    "bk_submit": "Confirm booking",
+    "bk_pick": "Please choose a date first",
+    "bk_ok": "Your slot is booked for {d}. To change it, please message us.",
+    "bk_full": "Full",
+    "bk_left": "{n} left",
+    "bk_sys_err": "Something went wrong. Please message us instead.",
+    "bk_fail": "Booking failed. Please try again or message us instead.",
+    "err": {
+      "full": "This day is full. Please choose another day.",
+      "closed": "This date is no longer open. Please choose another day.",
+      "invalid_phone": "The phone number looks invalid. Please check it.",
+      "missing": "Please enter your name and phone number.",
+      "duplicate": "This phone number is already booked for this day.",
+      "too_many": "Too many requests. Please wait a moment and try again."
+    },
+    "qr_alt": "QR code to add us on LINE",
+    "qr_cap": "Scan to add us on LINE",
+    "dock_line": "Chat on LINE",
+    "dock_call": "Call",
+    "load_err": "Could not load the page content. Please refresh the page."
+  }
+}
