@@ -85,6 +85,19 @@ footer{padding:32px 0 36px;font-size:.86rem;color:var(--muted);text-align:center
 .qr{background:#fff;color:#0c1f3d;border-radius:20px;padding:16px 16px 14px;width:236px;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,.3)}
 .qr img{display:block;width:100%;height:auto;border-radius:8px}.qr span{display:block;font-size:.86rem;font-weight:600;margin-top:10px}
 .flogo{width:150px;margin:0 auto 18px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.flogo img{display:block;width:100%;height:auto}
+.bk,.bk-form{display:grid;gap:22px;max-width:680px}.bk h3{font-size:1.05rem}
+.days{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.day{font:inherit;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;color:var(--ink);min-height:64px}
+.day b{display:block;font-weight:600}.day small{color:var(--muted)}
+.day[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.day:disabled{opacity:.5;cursor:not-allowed}
+.fld{display:grid;gap:6px}.fld label{font-weight:600;font-size:.95rem}
+.fld input,.fld textarea{font:inherit;font-size:16px;min-height:52px;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.fld textarea{min-height:96px;resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.msg{padding:14px 16px;border-radius:12px;font-size:.96rem;margin:0}.msg.ok{background:var(--accent-soft);border:1px solid var(--accent)}.msg.er{background:#fdecec;color:#7a1b1b;border:1px solid #e9b4b4}
+.sub{background:var(--accent);color:#0c1f3d;border:0;border-radius:12px;min-height:56px;font:inherit;font-weight:700;font-size:1.05rem;cursor:pointer}.sub:disabled{opacity:.6;cursor:wait}
+@media(min-width:640px){.days{grid-template-columns:repeat(3,1fr)}}
 .err{padding:40px 22px;text-align:center}
 @media(min-width:640px){.btns{flex-direction:row}.btn{min-width:230px}.grid3{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:900px){
@@ -138,6 +151,59 @@ function sec(id, c, alt) {
   w.append(h); s.append(w);
   return [s, w];
 }
+const ERR = { full: "วันนี้คิวเต็มแล้ว กรุณาเลือกวันอื่น", closed: "วันที่นี้ไม่เปิดรับแล้ว กรุณาเลือกวันอื่น", invalid_phone: "เบอร์โทรไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง", missing: "กรุณากรอกชื่อและเบอร์โทร", duplicate: "เบอร์นี้จองวันนี้ไว้แล้ว" };
+function TH(s) {
+  const [y, m, d] = s.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("th-TH", { weekday: "short", day: "numeric", month: "short" });
+}
+function bk(c, p) {
+  const r = p ? fetch(c.booking_api, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(p) }) : fetch(c.booking_api);
+  return r.then((x) => x.json());
+}
+function booking(c) {
+  const [s, w] = sec("booking", { title: "จองคิววันยื่นเอกสาร", lead: "เลือกวันที่เปิดรับ แล้วกรอกข้อมูลให้ครบ ระบบจะแสดงจำนวนคิวคงเหลือของแต่ละวัน" }, true);
+  const days = el("div", "days"), msg = el("div"), form = el("form", "bk-form");
+  let pick = "";
+  form.innerHTML = '<div class="fld"><label for="bn">ชื่อ-นามสกุล</label><input id="bn" name="name" autocomplete="name" required maxlength="80"></div>'
+    + '<div class="fld"><label for="bp">เบอร์โทร</label><input id="bp" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20"></div>'
+    + '<div class="fld"><label for="bl">LINE ID (ถ้ามี)</label><input id="bl" name="line" maxlength="60"></div>'
+    + '<div class="fld"><label for="bt">เอกสารที่จะยื่น หรือรายละเอียดเพิ่มเติม (ถ้ามี)</label><textarea id="bt" name="note" rows="3" maxlength="300"></textarea></div>'
+    + '<div class="hp" aria-hidden="true"><label>อย่ากรอกช่องนี้<input name="website" tabindex="-1" autocomplete="off"></label></div>'
+    + '<button class="sub" type="submit">ยืนยันการจองคิว</button>';
+  const h1 = el("h3", null, "1. เลือกวัน"), h2 = el("h3", null, "2. กรอกข้อมูล");
+  async function load() {
+    days.textContent = "กำลังโหลดวันที่เปิดรับ...";
+    try {
+      const r = await bk(c);
+      if (!r.ok) throw new Error("load");
+      days.textContent = "";
+      if (!r.slots.length) { days.append(el("p", "lead", "ตอนนี้ยังไม่มีวันที่เปิดรับ กรุณาทักแชตเพื่อสอบถาม")); return; }
+      r.slots.forEach((x) => {
+        const full = x.remaining < 1, b = el("button", "day", null, { type: "button", "aria-pressed": String(pick === x.date) });
+        b.disabled = full;
+        b.append(el("b", null, TH(x.date)), el("small", null, full ? "เต็มแล้ว" : "เหลือ " + x.remaining + " คิว"));
+        b.onclick = () => { pick = x.date; days.querySelectorAll(".day").forEach((d) => d.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); };
+        days.append(b);
+      });
+    } catch (e) { days.textContent = ""; days.append(el("p", "msg er", "โหลดวันที่ไม่สำเร็จ กรุณาลองใหม่หรือทักแชตแทน")); }
+  }
+  form.onsubmit = async (e) => {
+    e.preventDefault(); msg.textContent = "";
+    if (!pick) { msg.append(el("div", "msg er", "กรุณาเลือกวันที่ก่อน")); return; }
+    const fd = new FormData(form), btn = form.querySelector(".sub");
+    btn.disabled = true;
+    try {
+      const r = await bk(c, { date: pick, name: fd.get("name"), phone: fd.get("phone"), line: fd.get("line"), note: fd.get("note"), website: fd.get("website") });
+      if (r.ok) { msg.append(el("div", "msg ok", "บันทึกคิวของคุณแล้ว วันที่ " + TH(pick) + " หากต้องการเปลี่ยนแปลง กรุณาทักแชต")); form.reset(); pick = ""; await load(); }
+      else msg.append(el("div", "msg er", ERR[r.error] || "จองไม่สำเร็จ กรุณาลองใหม่หรือทักแชตแทน"));
+    } catch (x) { msg.append(el("div", "msg er", "ระบบขัดข้อง กรุณาทักแชตแทน")); }
+    btn.disabled = false;
+  };
+  const box = el("div", "bk");
+  box.append(h1, days, h2, form, msg); w.append(box);
+  load();
+  return s;
+}
 function render(c) {
   const app = document.getElementById("app");
   app.textContent = "";
@@ -148,7 +214,7 @@ function render(c) {
   lg.onerror = () => lg.remove();
   brand.append(lg, c.brand.join(""));
   const links = el("nav", "links", null, { "aria-label": "เมนูหลัก", id: "menu" });
-  c.nav.forEach((n) => links.append(el("a", null, n.label, { href: n.href })));
+  (c.booking_api ? c.nav.concat([{ label: "จองคิว", href: "#booking" }]) : c.nav).forEach((n) => links.append(el("a", null, n.label, { href: n.href })));
   const burger = el("button", "burger", null, { type: "button", "aria-label": "เมนู", "aria-expanded": "false", "aria-controls": "menu" });
   burger.innerHTML = "<i></i><i></i><i></i>";
   burger.onclick = () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", String(o)); };
@@ -204,6 +270,8 @@ function render(c) {
     p.append(el("div", "note", c.pricing.note)); pg.append(p);
   });
   w.append(pg); main.append(s);
+
+  if (c.booking_api) main.append(booking(c));
 
   [s, w] = sec("faq", c.faq);
   c.faq.items.forEach((it) => { const d = el("details", "rv"); d.append(el("summary", null, it.q), el("p", null, it.a)); w.append(d); });
