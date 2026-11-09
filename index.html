@@ -80,7 +80,14 @@ footer{padding:32px 0 36px;font-size:.86rem;color:var(--muted);text-align:center
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hdbg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .dock a{flex:1;min-height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;text-decoration:none}
 .dock .l{background:var(--navy);color:#fff}.dock .t{border:1.5px solid var(--line);background:var(--surface)}
-.lang{font:inherit;font-size:.95rem;min-height:46px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.lm{position:relative}
+.lmb{font:inherit;min-height:46px;min-width:62px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.lmb::after{content:"";width:7px;height:7px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-2px) rotate(45deg)}
+.fl{width:28px;height:19px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.18);display:block;flex:none}
+.lmenu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:170px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px}
+.lmenu[hidden]{display:none}
+.lmenu button{font:inherit;display:flex;align-items:center;gap:12px;width:100%;min-height:46px;padding:0 12px;border:0;border-radius:8px;background:none;color:var(--ink);cursor:pointer;text-align:left}
+.lmenu button:hover,.lmenu button[aria-current="true"]{background:var(--accent-soft);font-weight:600}
 @media(max-width:639px){.chat{display:none}}
 .contact .btns{justify-content:center}.logo{height:40px;width:auto;display:block;border-radius:10px}
 .cgrid{display:grid;gap:34px;align-items:center;justify-items:center}
@@ -153,6 +160,13 @@ function sec(id, c, alt) {
   w.append(h); s.append(w);
   return [s, w];
 }
+const FLAGS = {
+  th: '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#A51931"/><rect y="3.33" width="30" height="13.34" fill="#F4F5F8"/><rect y="6.67" width="30" height="6.66" fill="#2D2A4A"/></svg>',
+  en: '<svg class="fl" viewBox="0 0 60 40" preserveAspectRatio="none" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="8"/></svg>',
+  zh: '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07"/><polygon points="10.77,2.46 10.13,2.32 9.80,2.88 9.74,2.23 9.10,2.08 9.71,1.82 9.65,1.17 10.08,1.66 10.68,1.41 10.34,1.97"/><polygon points="12.89,4.13 12.25,4.24 12.15,4.89 11.85,4.31 11.20,4.42 11.66,3.95 11.35,3.37 11.94,3.66 12.40,3.19 12.30,3.84"/><polygon points="12.87,6.75 12.32,7.12 12.50,7.75 11.99,7.34 11.45,7.71 11.67,7.09 11.15,6.69 11.81,6.71 12.03,6.10 12.21,6.73"/><polygon points="10.70,8.44 10.34,8.98 10.75,9.49 10.12,9.32 9.76,9.87 9.73,9.21 9.10,9.04 9.71,8.81 9.68,8.16 10.09,8.67"/></g></svg>'
+};
+document.addEventListener("click", (e) => { const m = document.querySelector(".lmenu"); if (m && !m.hidden && !e.target.closest(".lm")) { m.hidden = true; const b = document.querySelector(".lmb"); if (b) b.setAttribute("aria-expanded", "false"); } });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") { const m = document.querySelector(".lmenu"); if (m && !m.hidden) { m.hidden = true; const b = document.querySelector(".lmb"); if (b) { b.setAttribute("aria-expanded", "false"); b.focus(); } } } });
 const LANGS = { th: { file: "content.json", loc: "th-TH", name: "ไทย" }, en: { file: "content.en.json", loc: "en-GB", name: "English" }, zh: { file: "content.zh.json", loc: "zh-CN", name: "中文" } };
 let LANG = "th";
 function TH(s) {
@@ -232,10 +246,18 @@ function render(c) {
   burger.innerHTML = "<i></i><i></i><i></i>";
   burger.onclick = () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", String(o)); };
   links.addEventListener("click", (e) => { if (e.target.tagName === "A") { links.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); } });
-  const sel = el("select", "lang", null, { "aria-label": u.lang_aria });
-  Object.keys(LANGS).forEach((k) => { const o = el("option", null, LANGS[k].name, { value: k }); if (k === LANG) o.selected = true; sel.append(o); });
-  sel.onchange = () => { setLang(sel.value); };
-  inn.append(brand, links, sel, el("a", "chat", c.nav_cta, { href: c.line_url }), burger);
+  const lm = el("div", "lm"), lb = el("button", "lmb", null, { type: "button", "aria-haspopup": "true", "aria-expanded": "false", "aria-label": u.lang_aria + ": " + LANGS[LANG].name });
+  lb.innerHTML = FLAGS[LANG];
+  const lmenu = el("div", "lmenu", null, { role: "menu" }); lmenu.hidden = true;
+  Object.keys(LANGS).forEach((k) => {
+    const b = el("button", null, null, { type: "button", role: "menuitem", lang: k, "aria-current": String(k === LANG) });
+    b.innerHTML = FLAGS[k]; b.append(LANGS[k].name);
+    b.onclick = () => { if (k !== LANG) setLang(k); else { lmenu.hidden = true; lb.setAttribute("aria-expanded", "false"); } };
+    lmenu.append(b);
+  });
+  lb.onclick = () => { lmenu.hidden = !lmenu.hidden; lb.setAttribute("aria-expanded", String(!lmenu.hidden)); };
+  lm.append(lb, lmenu);
+  inn.append(brand, links, lm, el("a", "chat", c.nav_cta, { href: c.line_url }), burger);
   hd.append(inn);
 
   const main = el("main", null, null, { id: "top" });
