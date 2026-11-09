@@ -7,7 +7,7 @@
 <meta name="description" content="รับแปลภาษา ไทย-อังกฤษ รับรองเอกสารและยื่นนิติกรณ์ที่กรมการกงสุล ให้บริการหัวหิน รับงานทั่วประเทศ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light;
 --bg:#f6f7fa;--surface:#fff;--ink:#0b1b34;--muted:#566078;--navy:#0c1f3d;--navy2:#17386b;--accent:#a67a22;--accent-soft:#f4ecd9;--line:#e3e7ee;--hdbg:rgba(246,247,250,.86);
@@ -16,7 +16,7 @@
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0a1222;--surface:#111c35;--ink:#eef1f6;--muted:#9aa6bd;--navy:#070e1d;--navy2:#12305c;--accent:#d9b25f;--accent-soft:#2a2618;--line:#1f2c4a;--hdbg:rgba(10,18,34,.86);--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35)}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Thai",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-text-size-adjust:100%;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Thai","Noto Sans SC",system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-text-size-adjust:100%;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 h1,h2,h3{margin:0;line-height:1.3;letter-spacing:-.01em;font-weight:600}
 a{color:inherit}.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
@@ -80,6 +80,8 @@ footer{padding:32px 0 36px;font-size:.86rem;color:var(--muted);text-align:center
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hdbg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .dock a{flex:1;min-height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;text-decoration:none}
 .dock .l{background:var(--navy);color:#fff}.dock .t{border:1.5px solid var(--line);background:var(--surface)}
+.lang{font:inherit;font-size:.95rem;min-height:46px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+@media(max-width:639px){.chat{display:none}}
 .contact .btns{justify-content:center}.logo{height:40px;width:auto;display:block;border-radius:10px}
 .cgrid{display:grid;gap:34px;align-items:center;justify-items:center}
 .qr{background:#fff;color:#0c1f3d;border-radius:20px;padding:16px 16px 14px;width:236px;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,.3)}
@@ -151,52 +153,59 @@ function sec(id, c, alt) {
   w.append(h); s.append(w);
   return [s, w];
 }
-const ERR = { full: "วันนี้คิวเต็มแล้ว กรุณาเลือกวันอื่น", closed: "วันที่นี้ไม่เปิดรับแล้ว กรุณาเลือกวันอื่น", invalid_phone: "เบอร์โทรไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง", missing: "กรุณากรอกชื่อและเบอร์โทร", duplicate: "เบอร์นี้จองวันนี้ไว้แล้ว" };
+const LANGS = { th: { file: "content.json", loc: "th-TH", name: "ไทย" }, en: { file: "content.en.json", loc: "en-GB", name: "English" }, zh: { file: "content.zh.json", loc: "zh-CN", name: "中文" } };
+let LANG = "th";
 function TH(s) {
   const [y, m, d] = s.split("-").map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString("th-TH", { weekday: "short", day: "numeric", month: "short" });
+  return new Date(y, m - 1, d).toLocaleDateString(LANGS[LANG].loc, { weekday: "short", day: "numeric", month: "short" });
 }
 function bk(c, p) {
   const r = p ? fetch(c.booking_api, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(p) }) : fetch(c.booking_api);
   return r.then((x) => x.json());
 }
 function booking(c) {
-  const [s, w] = sec("booking", { title: "จองคิววันยื่นเอกสาร", lead: "เลือกวันที่เปิดรับ แล้วกรอกข้อมูลให้ครบ ระบบจะแสดงจำนวนคิวคงเหลือของแต่ละวัน" }, true);
+  const u = c.ui;
+  const [s, w] = sec("booking", { title: u.bk_title, lead: u.bk_lead }, true);
   const days = el("div", "days"), msg = el("div"), form = el("form", "bk-form");
   let pick = "";
-  form.innerHTML = '<div class="fld"><label for="bn">ชื่อ-นามสกุล</label><input id="bn" name="name" autocomplete="name" required maxlength="80"></div>'
-    + '<div class="fld"><label for="bp">เบอร์โทร</label><input id="bp" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20"></div>'
-    + '<div class="fld"><label for="bl">LINE ID (ถ้ามี)</label><input id="bl" name="line" maxlength="60"></div>'
-    + '<div class="fld"><label for="bt">เอกสารที่จะยื่น หรือรายละเอียดเพิ่มเติม (ถ้ามี)</label><textarea id="bt" name="note" rows="3" maxlength="300"></textarea></div>'
-    + '<div class="hp" aria-hidden="true"><label>อย่ากรอกช่องนี้<input name="website" tabindex="-1" autocomplete="off"></label></div>'
-    + '<button class="sub" type="submit">ยืนยันการจองคิว</button>';
-  const h1 = el("h3", null, "1. เลือกวัน"), h2 = el("h3", null, "2. กรอกข้อมูล");
+  const F = (id, label, inner) => { const d = el("div", "fld"); d.append(el("label", null, label, { for: id })); d.insertAdjacentHTML("beforeend", inner); return d; };
+  form.append(
+    F("bn", u.f_name, '<input id="bn" name="name" autocomplete="name" required maxlength="80">'),
+    F("bp", u.f_phone, '<input id="bp" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20">'),
+    F("bl", u.f_line, '<input id="bl" name="line" maxlength="60">'),
+    F("bt", u.f_note, '<textarea id="bt" name="note" rows="3" maxlength="300"></textarea>')
+  );
+  const hp = el("div", "hp", null, { "aria-hidden": "true" }), hl = el("label", null, u.f_hp);
+  hl.insertAdjacentHTML("beforeend", '<input name="website" tabindex="-1" autocomplete="off">'); hp.append(hl);
+  const sb = el("button", "sub", u.bk_submit, { type: "submit" });
+  form.append(hp, sb);
+  const h1 = el("h3", null, u.bk_step1), h2 = el("h3", null, u.bk_step2);
   async function load() {
-    days.textContent = "กำลังโหลดวันที่เปิดรับ...";
+    days.textContent = u.bk_loading;
     try {
       const r = await bk(c);
       if (!r.ok) throw new Error("load");
       days.textContent = "";
-      if (!r.slots.length) { days.append(el("p", "lead", "ตอนนี้ยังไม่มีวันที่เปิดรับ กรุณาทักแชตเพื่อสอบถาม")); return; }
+      if (!r.slots.length) { days.append(el("p", "lead", u.bk_none)); return; }
       r.slots.forEach((x) => {
         const full = x.remaining < 1, b = el("button", "day", null, { type: "button", "aria-pressed": String(pick === x.date) });
         b.disabled = full;
-        b.append(el("b", null, TH(x.date)), el("small", null, full ? "เต็มแล้ว" : "เหลือ " + x.remaining + " คิว"));
+        b.append(el("b", null, TH(x.date)), el("small", null, full ? u.bk_full : u.bk_left.replace("{n}", x.remaining)));
         b.onclick = () => { pick = x.date; days.querySelectorAll(".day").forEach((d) => d.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); };
         days.append(b);
       });
-    } catch (e) { days.textContent = ""; days.append(el("p", "msg er", "โหลดวันที่ไม่สำเร็จ กรุณาลองใหม่หรือทักแชตแทน")); }
+    } catch (e) { days.textContent = ""; days.append(el("p", "msg er", u.bk_load_err)); }
   }
   form.onsubmit = async (e) => {
     e.preventDefault(); msg.textContent = "";
-    if (!pick) { msg.append(el("div", "msg er", "กรุณาเลือกวันที่ก่อน")); return; }
+    if (!pick) { msg.append(el("div", "msg er", u.bk_pick)); return; }
     const fd = new FormData(form), btn = form.querySelector(".sub");
     btn.disabled = true;
     try {
       const r = await bk(c, { date: pick, name: fd.get("name"), phone: fd.get("phone"), line: fd.get("line"), note: fd.get("note"), website: fd.get("website") });
-      if (r.ok) { msg.append(el("div", "msg ok", "บันทึกคิวของคุณแล้ว วันที่ " + TH(pick) + " หากต้องการเปลี่ยนแปลง กรุณาทักแชต")); form.reset(); pick = ""; await load(); }
-      else msg.append(el("div", "msg er", ERR[r.error] || "จองไม่สำเร็จ กรุณาลองใหม่หรือทักแชตแทน"));
-    } catch (x) { msg.append(el("div", "msg er", "ระบบขัดข้อง กรุณาทักแชตแทน")); }
+      if (r.ok) { msg.append(el("div", "msg ok", u.bk_ok.replace("{d}", TH(pick)))); form.reset(); pick = ""; await load(); }
+      else msg.append(el("div", "msg er", u.err[r.error] || u.bk_fail));
+    } catch (x) { msg.append(el("div", "msg er", u.bk_sys_err)); }
     btn.disabled = false;
   };
   const box = el("div", "bk");
@@ -205,6 +214,10 @@ function booking(c) {
   return s;
 }
 function render(c) {
+  const u = c.ui;
+  document.documentElement.lang = u.html_lang;
+  document.title = u.title;
+  const md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", u.desc);
   const app = document.getElementById("app");
   app.textContent = "";
 
@@ -213,13 +226,16 @@ function render(c) {
   const lg = el("img", "logo", null, { src: LOGO_MARK, alt: "" });
   lg.onerror = () => lg.remove();
   brand.append(lg, c.brand.join(""));
-  const links = el("nav", "links", null, { "aria-label": "เมนูหลัก", id: "menu" });
-  (c.booking_api ? c.nav.concat([{ label: "จองคิว", href: "#booking" }]) : c.nav).forEach((n) => links.append(el("a", null, n.label, { href: n.href })));
-  const burger = el("button", "burger", null, { type: "button", "aria-label": "เมนู", "aria-expanded": "false", "aria-controls": "menu" });
+  const links = el("nav", "links", null, { "aria-label": u.menu_aria, id: "menu" });
+  (c.booking_api ? c.nav.concat([{ label: u.booking_nav, href: "#booking" }]) : c.nav).forEach((n) => links.append(el("a", null, n.label, { href: n.href })));
+  const burger = el("button", "burger", null, { type: "button", "aria-label": u.burger_aria, "aria-expanded": "false", "aria-controls": "menu" });
   burger.innerHTML = "<i></i><i></i><i></i>";
   burger.onclick = () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", String(o)); };
   links.addEventListener("click", (e) => { if (e.target.tagName === "A") { links.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); } });
-  inn.append(brand, links, el("a", "chat", c.nav_cta, { href: c.line_url }), burger);
+  const sel = el("select", "lang", null, { "aria-label": u.lang_aria });
+  Object.keys(LANGS).forEach((k) => { const o = el("option", null, LANGS[k].name, { value: k }); if (k === LANG) o.selected = true; sel.append(o); });
+  sel.onchange = () => { setLang(sel.value); };
+  inn.append(brand, links, sel, el("a", "chat", c.nav_cta, { href: c.line_url }), burger);
   hd.append(inn);
 
   const main = el("main", null, null, { id: "top" });
@@ -280,8 +296,8 @@ function render(c) {
   const ct = el("section", "contact", null, { id: "contact" }), cw = el("div", "wrap cgrid"), cl = el("div"), cb = el("div", "btns");
   cb.append(el("a", "btn gold", c.contact.line_label, { href: c.line_url }), el("a", "btn ghost", c.contact.phone_label, { href: c.contact.phone_href }));
   cl.append(el("h2", null, c.contact.title), el("p", null, c.contact.text), cb);
-  const qr = el("div", "qr"), qi = el("img", null, null, { src: QR, alt: "QR code สำหรับเพิ่มเพื่อน LINE" });
-  qr.append(qi, el("span", null, "สแกนเพื่อเพิ่มเพื่อน LINE"));
+  const qr = el("div", "qr"), qi = el("img", null, null, { src: QR, alt: u.qr_alt });
+  qr.append(qi, el("span", null, u.qr_cap));
   cw.append(cl, qr); ct.append(cw); main.append(ct);
 
   const f = el("footer"), fw = el("div", "wrap"), fb = el("p"), F = c.footer;
@@ -292,14 +308,26 @@ function render(c) {
   fw.append(fl, fb, el("p", null, F.disclaimer), el("p", null, F.copyright)); f.append(fw);
 
   const dock = el("div", "dock");
-  dock.append(el("a", "l", "ทักแชต LINE", { href: c.line_url }), el("a", "t", "โทร", { href: c.contact.phone_href }));
+  dock.append(el("a", "l", u.dock_line, { href: c.line_url }), el("a", "t", u.dock_call, { href: c.contact.phone_href }));
 
   app.append(hd, main, f, dock);
 
 }
-fetch("content.json", { cache: "no-cache" }).then((r) => r.json()).then(render).catch(() => {
-  document.getElementById("app").innerHTML = '<p class="err">โหลด content.json ไม่ได้ กรุณาตรวจว่าไฟล์ content.json อยู่ในโฟลเดอร์เดียวกับ index.html และเขียนถูกรูปแบบ</p>';
-});
+function setLang(k) {
+  if (!LANGS[k]) k = "th";
+  LANG = k;
+  try { localStorage.setItem("lang", k); } catch (e) {}
+  fetch(LANGS[k].file, { cache: "no-cache" }).then((r) => r.json()).then(render).catch(() => {
+    document.getElementById("app").innerHTML = '<p class="err">โหลดข้อมูลหน้าเว็บไม่สำเร็จ กรุณารีเฟรชหน้าอีกครั้ง / Could not load the page. Please refresh. / 页面加载失败,请刷新。</p>';
+  });
+}
+(function () {
+  let k = "th";
+  try { k = localStorage.getItem("lang") || "th"; } catch (e) {}
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q && LANGS[q]) k = q;
+  setLang(k);
+})();
 </script>
 </body>
 </html>
