@@ -5,176 +5,266 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>มูนนอส รับแปลภาษา รับรองเอกสาร | หัวหิน</title>
 <meta name="description" content="รับแปลภาษา ไทย-อังกฤษ รับรองเอกสารและยื่นนิติกรณ์ที่กรมการกงสุล ให้บริการหัวหิน รับงานทั่วประเทศ">
+<meta name="theme-color" content="#f6f2ea">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Trirong:wght@500;600;700&family=Sarabun:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Trirong:wght@400;500;600&family=Sarabun:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
 <style>
-/* Moonnos : consular seal (ivory paper + navy ink + brass gold) */
+/* ===== Moonnos : the document desk ===== */
 :root{color-scheme:light;
---bg:#f6f2ea;--surface:#fffcf6;--ink:#14233f;--muted:#565d6d;--navy:#14233f;--navy2:#22396a;--accent:#a9802f;--accent-ink:#8a6520;--accent-soft:#f1e6cc;--line:#e3dac7;--hdbg:rgba(246,242,234,.9);
---paper:#fbf7ef;--shadow:0 1px 0 rgba(20,35,63,.04),0 8px 24px -10px rgba(20,35,63,.14);--ph:#f1e2b9;
---serif:"Trirong","Noto Serif SC",Georgia,serif;--sans:"Sarabun","Noto Sans SC",system-ui,sans-serif}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1626;--surface:#142038;--ink:#efe9dc;--muted:#a7adbb;--navy:#0a1220;--navy2:#1b2f57;--accent:#d6b062;--accent-ink:#e2c27d;--accent-soft:#2a2416;--line:#27334c;--hdbg:rgba(13,22,38,.9);--paper:#111b30;--shadow:0 1px 0 rgba(0,0,0,.3),0 10px 26px -10px rgba(0,0,0,.6)}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#0d1626;--surface:#142038;--ink:#efe9dc;--muted:#a7adbb;--navy:#0a1220;--navy2:#1b2f57;--accent:#d6b062;--accent-ink:#e2c27d;--accent-soft:#2a2416;--line:#27334c;--hdbg:rgba(13,22,38,.9);--paper:#111b30;--shadow:0 1px 0 rgba(0,0,0,.3),0 10px 26px -10px rgba(0,0,0,.6)}
+--bg:#f6f2ea;--bg2:#efe8db;--card:#fffcf6;--paper:#fffdf8;--ink:#14233f;--ink2:#2c3a55;--mut:#5e6372;--line:#e2d9c6;--line2:#d3c7ae;
+--gold:#a9802f;--gold-ink:#8a6520;--gold-soft:#d6b062;--gold-wash:#f2e7cd;--navy:#14233f;--navy2:#1c2f55;--red:#a3261c;
+--hd:rgba(246,242,234,.88);--shadow:0 1px 0 rgba(20,35,63,.05),0 14px 34px -16px rgba(20,35,63,.28);--lift:0 30px 70px -24px rgba(20,35,63,.45);
+--serif:"Trirong","Noto Serif SC",Georgia,serif;--sans:"Sarabun","Noto Sans SC",system-ui,sans-serif;
+--ease:cubic-bezier(.23,1,.32,1);--gut:clamp(18px,4vw,48px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0d1626;--bg2:#111d33;--card:#142038;--paper:#fffdf8;--ink:#efe9dc;--ink2:#d9d2c3;--mut:#a7adbb;--line:#26324b;--line2:#34415e;--gold:#d6b062;--gold-ink:#e2c27d;--gold-wash:#2a2416;--hd:rgba(13,22,38,.88);--shadow:0 1px 0 rgba(0,0,0,.3),0 14px 34px -16px rgba(0,0,0,.7);--lift:0 30px 70px -24px rgba(0,0,0,.8)}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0d1626;--bg2:#111d33;--card:#142038;--paper:#fffdf8;--ink:#efe9dc;--ink2:#d9d2c3;--mut:#a7adbb;--line:#26324b;--line2:#34415e;--gold:#d6b062;--gold-ink:#e2c27d;--gold-wash:#2a2416;--hd:rgba(13,22,38,.88);--shadow:0 1px 0 rgba(0,0,0,.3),0 14px 34px -16px rgba(0,0,0,.7);--lift:0 30px 70px -24px rgba(0,0,0,.8)}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.75;-webkit-text-size-adjust:100%;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-h1,h2,h3{margin:0;line-height:1.35;font-family:var(--serif);font-weight:600;letter-spacing:0}
-a{color:inherit}.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.ph{background:var(--ph);color:#14233f;padding:0 6px;border-radius:4px}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.75;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:600;line-height:1.3;letter-spacing:0}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+.ph{background:#f1e2b9;color:#14233f;padding:0 6px;border-radius:4px}
+.tab{font-variant-numeric:tabular-nums}
+
+/* eyebrow : gold hairline + small tracked text */
+.eb{display:inline-flex;align-items:center;gap:12px;font-size:12.5px;font-weight:600;letter-spacing:.14em;color:var(--gold-ink);margin-bottom:16px}
+.eb::before{content:"";width:30px;height:1px;background:var(--gold)}
+.dark .eb{color:var(--gold-soft)}.dark .eb::before{background:var(--gold-soft)}
+
+/* the one button : pill with a trailing dot */
+.pill{display:inline-flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px;padding:6px 7px 6px 24px;border-radius:999px;font-weight:600;font-size:1rem;border:1px solid var(--line2);background:transparent;cursor:pointer;transition:background-color .4s var(--ease),border-color .4s var(--ease)}
+.pill .dot{width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--gold-wash);color:var(--gold-ink);transition:transform .45s var(--ease)}
+.pill .dot svg{width:16px;height:16px}
+.pill:hover .dot{transform:translateX(3px)}
+.pill.solid{background:var(--navy);border-color:var(--navy);color:#fff}
+.pill.solid .dot{background:var(--gold-soft);color:#14233f}
+.pill.solid:hover{background:var(--navy2)}
+:root[data-theme="dark"] .pill.solid{background:var(--gold-soft);border-color:var(--gold-soft);color:#14233f}
+:root[data-theme="dark"] .pill.solid .dot{background:#14233f;color:var(--gold-soft)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .pill.solid{background:var(--gold-soft);border-color:var(--gold-soft);color:#14233f}:root:not([data-theme="light"]) .pill.solid .dot{background:#14233f;color:var(--gold-soft)}}
+.pill.light{border-color:rgba(230,201,138,.55);color:#fff}.pill.light .dot{background:rgba(214,176,98,.18);color:var(--gold-soft)}.pill.light:hover{background:rgba(255,255,255,.06)}
+.pill.gold{background:var(--gold-soft);border-color:var(--gold-soft);color:#14233f}.pill.gold .dot{background:#14233f;color:var(--gold-soft)}
 
 /* header */
-.hd{position:sticky;top:0;z-index:50;background:var(--hdbg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-.in{display:flex;align-items:center;gap:10px;max-width:1080px;margin:0 auto;padding:10px 20px;position:relative}
-.brand{display:flex;align-items:center;gap:12px;margin-right:auto;text-decoration:none;font-family:var(--serif);font-weight:600;font-size:1.16rem}
-.brand svg{width:26px;height:26px;fill:var(--accent)}
-.logo{height:38px;width:38px;object-fit:cover;display:block;border-radius:50%;box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--accent)}
-.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);padding:6px 20px 14px;box-shadow:var(--shadow)}
-.links.open{display:flex}.links a{padding:14px 0;text-decoration:none;font-weight:500;border-bottom:1px solid var(--line)}
-.chat{background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;padding:0 18px;min-height:46px;display:inline-flex;align-items:center;border-radius:8px;white-space:nowrap}
-.burger{width:46px;height:46px;border:1px solid var(--line);background:var(--surface);border-radius:8px;display:grid;place-content:center;gap:5px;cursor:pointer}
-.burger i{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
+.hd{position:sticky;top:0;z-index:50;background:var(--hd);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.hd .in{display:flex;align-items:center;gap:10px;max-width:1180px;margin:0 auto;padding:10px var(--gut);position:relative}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto;font-family:var(--serif);font-weight:600;font-size:1.14rem;white-space:nowrap}
+.logo{width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--gold)}
+.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--card);border-bottom:1px solid var(--line);padding:6px var(--gut) 14px;box-shadow:var(--shadow)}
+.links.open{display:flex}
+.links a{padding:13px 0;font-weight:500;border-bottom:1px solid var(--line)}
+.chat{display:none;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--navy);color:#fff;font-weight:600;font-size:.95rem;white-space:nowrap}
+.burger{width:44px;height:44px;border:1px solid var(--line);background:var(--card);border-radius:999px;display:grid;place-content:center;gap:5px;cursor:pointer}
+.burger i{display:block;width:18px;height:1.5px;background:var(--ink);border-radius:2px}
+.lm{position:relative}
+.lmb{min-height:44px;min-width:60px;padding:0 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.lmb::after{content:"";width:6px;height:6px;border-right:1.5px solid var(--mut);border-bottom:1.5px solid var(--mut);transform:translateY(-2px) rotate(45deg)}
+.fl{width:26px;height:18px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.18);display:block;flex:none}
+.lmenu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:172px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:6px}
+.lmenu[hidden]{display:none}
+.lmenu button{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:0 12px;border:0;border-radius:9px;background:none;cursor:pointer;text-align:left}
+.lmenu button:hover,.lmenu button[aria-current="true"]{background:var(--gold-wash);font-weight:600}
 
-/* hero : navy with security-paper hatching and a gold moon glow */
-.hero{background:radial-gradient(520px 380px at 92% 0,rgba(214,176,98,.22),transparent 60%),radial-gradient(900px 420px at 10% 120%,#22396a,transparent 65%),#14233f;color:#fff;padding:48px 0 96px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(214,176,98,.07) 0 1px,transparent 1px 9px),repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 1px,transparent 1px 9px);-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}
-.hero::after{content:"";position:absolute;left:10px;right:10px;top:10px;bottom:10px;border:1px solid rgba(214,176,98,.28);border-radius:4px;pointer-events:none}
-.hgrid{position:relative;display:grid;gap:40px}
-.badge{display:inline-flex;align-items:center;gap:10px;font-size:.86rem;font-weight:600;letter-spacing:.06em;color:#e6c98a;margin-bottom:22px}
-.badge::before,.badge::after{content:"";width:26px;height:1px;background:linear-gradient(90deg,transparent,#d6b062)}
-.badge::after{background:linear-gradient(90deg,#d6b062,transparent)}
-.hero h1{font-size:clamp(2rem,6.6vw,3.4rem);font-weight:600;line-height:1.3}
-.hero p{color:#c3cbdb;max-width:34em;margin:20px 0 30px}
-.btns{display:flex;flex-direction:column;gap:12px}
-.btn{display:flex;align-items:center;justify-content:center;min-height:54px;padding:10px 26px;border-radius:8px;font-weight:600;font-size:1.04rem;text-decoration:none;text-align:center;transition:transform .15s,background-color .15s}
-.btn.gold{background:linear-gradient(180deg,#e0bd72,#c9a14f);color:#14233f;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 20px -8px rgba(214,176,98,.7)}
-.btn.gold:hover{transform:translateY(-1px)}
-.btn.ghost{border:1px solid rgba(230,201,138,.55);color:#fff}
-.btn.ghost:hover{background:rgba(255,255,255,.07)}
+/* hero */
+.hero{position:relative;padding:clamp(34px,6vw,84px) 0 clamp(40px,6vw,88px);background:radial-gradient(900px 520px at 85% 10%,var(--gold-wash),transparent 62%),var(--bg)}
+.hgrid{display:grid;gap:clamp(34px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.22;max-width:18ch;text-wrap:balance}
+.hero h1:lang(en){font-size:clamp(2rem,4.4vw,3.1rem)}
+.hero .lede{color:var(--mut);font-size:clamp(1rem,1.4vw,1.14rem);max-width:36em;margin:20px 0 28px}
+.hbtn{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin:34px 0 0;border-top:1px solid var(--line2)}
+.stats div{padding:14px 10px 0 0}
+.stats dt{font-family:var(--serif);font-weight:600;font-size:clamp(1.05rem,2.2vw,1.45rem);line-height:1.3;color:var(--ink)}
+.stats dd{margin:4px 0 0;font-size:.82rem;color:var(--mut);line-height:1.45}
 
-/* hero illustration : two papers, the translated one carries a gold seal */
-.docs{position:relative;height:236px}
-.sheet{position:absolute;width:64%;background:#fbf7ef;border-radius:3px;padding:20px 18px;box-shadow:0 26px 50px -12px rgba(0,0,0,.55)}
-.sheet.a{left:0;top:0;transform:rotate(-4deg);opacity:.92}.sheet.b{right:0;top:36px;transform:rotate(3deg)}
-.sheet.b::after{content:"";position:absolute;right:14px;bottom:12px;width:50px;height:50px;border-radius:50%;border:2px solid rgba(169,128,47,.8);box-shadow:inset 0 0 0 4px #fbf7ef,inset 0 0 0 5px rgba(169,128,47,.6);transform:rotate(-12deg)}
-.sheet em{font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.12em;color:#8a6520;border:1px solid #c9a14f;padding:1px 9px;border-radius:2px}
-.sheet i{display:block;height:6px;border-radius:3px;background:#e2dccf;margin:12px 0;width:92%}.sheet i.s{width:58%}
-
-/* stats */
-.statbox{position:relative;z-index:2;margin-top:-48px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:6px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr)}
-.stat{padding:20px 8px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border-right:0}
-.stat b{display:block;font-family:var(--serif);font-size:1.22rem;line-height:1.35;font-weight:600}
-.stat span{display:block;font-size:.8rem;color:var(--muted);line-height:1.5;margin-top:4px}
+/* the specimen : drag to compare original and translation */
+.spec-wrap{position:relative}
+.spec{position:relative;aspect-ratio:4/5;max-width:470px;margin:0 auto;border-radius:6px;box-shadow:var(--lift);touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none;--pos:50%;transform:rotate(-1.2deg)}
+.sheet{position:absolute;inset:0;background:var(--paper);color:#1d2638;border-radius:6px;padding:13% 8% 7%;overflow:hidden;font-size:clamp(10.5px,1.55vw,13px);line-height:1.5}
+.sheet.tr{clip-path:inset(0 0 0 var(--pos));background:#fdfaf2;font-family:var(--serif)}
+.sheet .top{display:flex;justify-content:space-between;font-size:.82em;letter-spacing:.12em;color:#7b7f8a;padding-bottom:4%;border-bottom:1px solid #e7e0cf}
+.sheet h4{font-size:1.65em;line-height:1.25;color:#14233f;margin:6% 0 4%;text-align:center}
+.sheet.orig h4{font-family:var(--sans);font-weight:700}
+.sheet dl{display:grid;grid-template-columns:42% 1fr;margin:0;row-gap:0}
+.sheet dt,.sheet dd{margin:0;min-height:2.9em;padding:.45em 0;border-bottom:1px dotted #d8cfbb}
+.sheet dt{color:#7b7f8a;padding-right:8px}
+.sheet dd{font-weight:600;color:#14233f}
+.stamp{position:absolute;left:9%;bottom:9%;padding:.35em .9em;border:2px solid rgba(163,38,28,.7);color:rgba(163,38,28,.8);font-weight:700;font-size:1.05em;border-radius:4px;transform:rotate(-8deg);letter-spacing:.06em}
+.seal{position:absolute;right:7%;bottom:5%;width:24%;aspect-ratio:1;border-radius:50%;border:2px solid #b38a36;box-shadow:inset 0 0 0 4px #fdfaf2,inset 0 0 0 5px rgba(179,138,54,.7);display:grid;place-content:center;text-align:center;color:#8a6520;transform:rotate(-10deg)}
+.seal b{font-size:1em;letter-spacing:.14em}.seal small{font-size:.62em;letter-spacing:.12em;line-height:1.3;font-family:var(--sans);font-weight:700}
+.cert{position:absolute;left:8%;right:40%;bottom:8%;font-size:.78em;color:#5d6270;font-style:italic;border-top:1px solid #1d2638;padding-top:.5em}
+.split{position:absolute;top:-10px;bottom:-10px;left:var(--pos);width:2px;margin-left:-1px;background:var(--gold);pointer-events:none}
+.knob{position:absolute;top:50%;left:var(--pos);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--navy);color:var(--gold-soft);display:grid;place-items:center;box-shadow:0 0 0 4px rgba(214,176,98,.35),0 8px 20px rgba(0,0,0,.3);cursor:ew-resize;touch-action:none}
+.knob svg{width:22px;height:22px}
+.tagl,.tagr{position:absolute;top:12px;font-size:11.5px;font-weight:700;letter-spacing:.12em;padding:4px 10px;border-radius:999px;background:rgba(20,35,63,.86);color:#fff;pointer-events:none}
+.tagl{left:12px}.tagr{right:12px;background:var(--gold-soft);color:#14233f}
+.spec-cap{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:22px;text-align:center}
+.spec-cap b{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--ink)}
+.spec-cap b svg{width:18px;height:18px;color:var(--gold)}
+.spec-cap span{font-size:.8rem;color:var(--mut)}
 
 /* sections */
-.sec{padding:64px 0}.alt{background:var(--paper);border-block:1px solid var(--line)}
-.sh{margin-bottom:32px}
-.sh h2{font-size:clamp(1.65rem,4.8vw,2.3rem)}
-.sh::before{content:"\2726";display:block;width:64px;margin-bottom:14px;text-align:center;font-size:13px;line-height:14px;color:var(--accent);background:linear-gradient(var(--accent),var(--accent)) 0 50%/22px 1px no-repeat,linear-gradient(var(--accent),var(--accent)) 100% 50%/22px 1px no-repeat}
-.lead{color:var(--muted);margin:12px 0 0;max-width:36em}
-.grid3{display:grid;gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
-.card::before{content:"";position:absolute;left:24px;right:24px;top:-1px;height:2px;background:var(--accent);transform:scaleX(.2);transform-origin:left;transition:transform .3s}
-.card:hover::before{transform:scaleX(1)}
-.ico{width:46px;height:46px;border-radius:50%;background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent);display:grid;place-items:center;margin-bottom:16px}
-.ico svg{width:22px;height:22px;stroke:var(--accent-ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.card h3{font-size:1.22rem;margin-bottom:8px}.card p{margin:0 0 18px;color:var(--muted);font-size:.97rem}
-.price{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--serif);font-size:1.6rem;font-weight:600}
-.price small{font-family:var(--sans);font-size:.88rem;font-weight:400;color:var(--muted)}
+.sec{padding:clamp(56px,7vw,100px) 0}
+.sec.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.shd{display:grid;gap:10px;margin-bottom:clamp(28px,4vw,48px)}
+.shd h2{font-size:clamp(1.75rem,4vw,2.7rem);max-width:20ch}
+.shd p{margin:0;color:var(--mut);max-width:40em}
 
-/* steps */
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:24px}
-.stp{position:relative;padding-left:62px}
-.stp .n{position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;border:1px solid var(--accent);box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4px var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.1rem;background:var(--paper)}
-.stp b{display:block;font-size:1.08rem;padding-top:7px;font-weight:600}.stp span{color:var(--muted);font-size:.95rem}
+/* services : an editorial ledger */
+.ledger{list-style:none;margin:0;padding:0;border-top:1px solid var(--line2)}
+.ledger li{display:grid;grid-template-columns:44px 1fr;gap:6px 14px;padding:24px 0;border-bottom:1px solid var(--line2)}
+.ledger .no{font-family:var(--serif);font-size:1.05rem;color:var(--gold);padding-top:4px}
+.ledger h3{font-size:clamp(1.3rem,2.6vw,1.7rem)}
+.ledger p{margin:6px 0 0;color:var(--mut);max-width:46em}
+.ledger .pr{grid-column:2;font-family:var(--serif);font-weight:600;font-size:1.5rem;white-space:nowrap}
+.ledger .pr small{font-family:var(--sans);font-size:.82rem;font-weight:400;color:var(--mut);margin-left:6px}
+.ledger .pr .pre{margin:0 6px 0 0}
 
-/* example receipt : looks like an issued document */
-.receipt{background:var(--surface) linear-gradient(var(--accent),var(--accent)) 0 0/100% 3px no-repeat;border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);padding:26px 24px 22px;max-width:580px}
-.doc{font-family:var(--serif);font-weight:600;font-size:1.12rem;margin-bottom:6px;padding-bottom:10px;border-bottom:1px solid var(--ink)}
-.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
-.row span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
-.row.total{border-bottom:0;border-top:3px double var(--ink);margin-top:6px;font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--accent-ink);padding-top:14px}
-.note{font-size:.88rem;color:var(--muted);margin-top:12px}
-.pp h3{margin-bottom:10px}.pp .note{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line)}
-.pp p{margin:0 0 14px}
-.pp b{font-family:var(--serif);font-weight:600}
+/* calculator */
+.calc{display:grid;gap:22px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,28px);box-shadow:var(--shadow)}
+.q{margin:0 0 22px;padding:0;border:0}
+.q:last-child{margin-bottom:0}
+.q legend{font-weight:700;font-size:.95rem;margin-bottom:10px;padding:0}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:5px;border-radius:14px;background:var(--bg2);border:1px solid var(--line)}
+.seg label{position:relative;display:grid;place-items:center;text-align:center;min-height:52px;padding:6px 8px;border-radius:10px;cursor:pointer;font-weight:600;font-size:.92rem;line-height:1.3;color:var(--mut)}
+.seg label small{display:block;font-weight:500;font-size:.78rem;opacity:.85}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label:has(input:checked){background:var(--navy);color:#fff;box-shadow:inset 0 -3px 0 var(--gold-soft)}
+.seg label:has(input:focus-visible){outline:2px solid var(--gold);outline-offset:2px}
+.step{display:flex;align-items:center;gap:6px;width:max-content;border:1px solid var(--line);border-radius:999px;padding:5px;background:var(--bg2)}
+.step button{width:44px;height:44px;border-radius:50%;border:0;background:var(--card);font-size:1.4rem;line-height:1;cursor:pointer;box-shadow:0 1px 0 var(--line)}
+.step button:disabled{opacity:.4;cursor:default}
+.step output{min-width:86px;text-align:center;font-family:var(--serif);font-weight:600;font-size:1.25rem}
+.tog{display:flex;align-items:center;gap:14px;min-height:58px;padding:10px 14px;margin-bottom:8px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--card)}
+.tog:has(input:checked){border-color:var(--gold);background:var(--gold-wash)}
+.tog input{width:22px;height:22px;accent-color:#14233f;flex:none}
+.tog span{flex:1;font-weight:600;line-height:1.35}
+.tog em{font-style:normal;font-family:var(--serif);font-weight:600;white-space:nowrap}
+.slip{position:relative;background:var(--paper);color:#1d2638;border-radius:6px;padding:26px 24px 22px;box-shadow:var(--lift)}
+.slip::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;border-radius:6px 6px 0 0;background:linear-gradient(90deg,#14233f 0 70%,#c9a14f 70%)}
+.slip .h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:12px;border-bottom:1px solid #14233f}
+.slip .h b{font-family:var(--serif);font-weight:600;font-size:1.2rem;color:#14233f}
+.slip .h small{font-size:.78rem;letter-spacing:.14em;color:#8a6520;font-weight:700}
+.slip .rows{min-height:96px}
+.slip .r{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed #ddd3bf;font-size:.95rem}
+.slip .r span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.slip .empty{color:#7b7f8a;padding:24px 0;text-align:center}
+.slip .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:8px;padding:14px 12px;background:#f4ecd9;border-top:3px double #14233f;font-family:var(--serif);font-weight:600;color:#14233f}
+.slip .t span:last-child{font-size:1.65rem;font-variant-numeric:tabular-nums}
+.slip .n{font-size:.82rem;color:#5d6270;margin:12px 0 18px;line-height:1.55}
+.slip .pill{width:100%}
+
+/* route : the document's journey */
+.route{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.route li{position:relative;padding:0 0 30px 64px}
+.route li:last-child{padding-bottom:0}
+.route li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-4px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--gold-ink);background:var(--bg2);border:1px solid var(--gold);box-shadow:inset 0 0 0 3px var(--bg2),inset 0 0 0 4px var(--gold)}
+.route li::after{content:"";position:absolute;left:22px;top:46px;bottom:4px;width:1px;background:repeating-linear-gradient(var(--gold) 0 5px,transparent 5px 10px)}
+.route li:last-child::after{display:none}
+.route b{display:block;font-family:var(--serif);font-weight:600;font-size:1.2rem;line-height:1.35}
+.route span{color:var(--mut);font-size:.95rem}
+.rnote{display:flex;gap:12px;align-items:flex-start;margin:34px 0 0;padding:16px 18px;border-left:3px solid var(--gold);background:var(--card);border-radius:0 12px 12px 0;color:var(--ink2);font-size:.95rem}
+.rnote svg{width:22px;height:22px;flex:none;color:var(--gold);margin-top:2px}
+
+/* booking */
+.bk{display:grid;gap:22px}
+.bk h3{font-family:var(--sans);font-weight:700;font-size:1rem}
+.days{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.days>p{grid-column:1/-1;margin:0}
+.day{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;min-height:66px;transition:border-color .3s var(--ease)}
+.day:hover{border-color:var(--gold)}
+.day b{display:block;font-weight:600}.day small{color:var(--mut)}
+.day[aria-pressed="true"]{border-color:var(--gold);background:var(--gold-wash);box-shadow:inset 0 0 0 1px var(--gold)}
+.day:disabled{opacity:.5;cursor:not-allowed}
+.bk-form{display:grid;gap:16px}
+.fld{display:grid;gap:6px}.fld label{font-weight:600;font-size:.92rem}
+.fld input,.fld textarea{font:inherit;font-size:16px;min-height:52px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);width:100%}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-wash)}
+.fld textarea{min-height:96px;resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.msg{padding:14px 16px;border-radius:12px;font-size:.95rem;margin:0}
+.msg.ok{background:var(--gold-wash);border:1px solid var(--gold)}
+.msg.er{background:#fbecea;color:#7a1b1b;border:1px solid #e6b3ad}
+.sub{width:100%;justify-content:space-between}
+.sub:disabled{opacity:.6;cursor:wait}
 
 /* faq */
-details{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-bottom:10px}
-details[open]{border-color:var(--accent)}
-summary{cursor:pointer;list-style:none;padding:18px 54px 18px 20px;font-weight:600;position:relative;min-height:58px}summary::-webkit-details-marker{display:none}
-summary::after{content:"";position:absolute;right:22px;top:50%;width:9px;height:9px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
-details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}details p{margin:0;padding:0 20px 20px;color:var(--muted)}
+.faq details{border-bottom:1px solid var(--line2)}
+.faq details:first-child{border-top:1px solid var(--line2)}
+.faq summary{cursor:pointer;list-style:none;padding:20px 48px 20px 0;font-family:var(--serif);font-weight:600;font-size:1.12rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:50%;width:32px;height:32px;margin-top:-16px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line2);color:var(--gold-ink);font-family:var(--sans);font-size:1.2rem;transition:transform .35s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0;padding:0 48px 22px 0;color:var(--mut)}
 
 /* contact */
-.contact{background:radial-gradient(520px 320px at 85% 0,rgba(214,176,98,.18),transparent 62%),#14233f;color:#fff;text-align:center;padding:72px 0;position:relative;overflow:hidden}
-.contact::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(214,176,98,.06) 0 1px,transparent 1px 9px);-webkit-mask-image:linear-gradient(0deg,#000,transparent 80%);mask-image:linear-gradient(0deg,#000,transparent 80%)}
-.contact .wrap{position:relative}
-.contact h2{font-size:clamp(1.75rem,5.2vw,2.5rem)}.contact p{color:#c3cbdb;margin:14px 0 30px}
-.contact .btns{justify-content:center}
-.cgrid{display:grid;gap:34px;align-items:center;justify-items:center}
-.qr{background:#fbf7ef;color:#14233f;border-radius:6px;padding:16px 16px 14px;width:236px;text-align:center;box-shadow:0 0 0 1px rgba(214,176,98,.55),0 0 0 7px rgba(251,247,239,.07),0 24px 48px rgba(0,0,0,.35)}
-.qr img{display:block;width:100%;height:auto;border-radius:3px}.qr span{display:block;font-size:.88rem;font-weight:600;margin-top:10px}
+.dark{background:radial-gradient(640px 360px at 85% 0,rgba(214,176,98,.2),transparent 62%),#14233f;color:#fff}
+.contact{padding:clamp(60px,8vw,110px) 0}
+.cgrid{display:grid;gap:40px;align-items:center}
+.contact h2{font-size:clamp(1.9rem,4.6vw,3rem);max-width:16ch}
+.contact p{color:#c3cbdb;margin:16px 0 28px;max-width:34em}
+.cbtn{display:flex;flex-wrap:wrap;gap:12px}
+.cline{display:grid;gap:4px;margin-top:28px;font-size:.92rem;color:#c3cbdb}
+.cline b{color:#fff;font-weight:600}
+.qr{justify-self:center;background:#fbf7ef;color:#14233f;border-radius:18px;padding:16px 16px 14px;width:min(250px,80%);text-align:center;box-shadow:0 0 0 1px rgba(214,176,98,.55),0 0 0 8px rgba(251,247,239,.06),0 30px 60px rgba(0,0,0,.4)}
+.qr img{width:100%;border-radius:8px}
+.qr span{display:block;font-size:.88rem;font-weight:600;margin-top:10px}
 
-footer{padding:36px 0;font-size:.86rem;color:var(--muted);text-align:center}footer p{margin:0 0 12px}
-.flogo{width:128px;margin:6px auto 20px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--accent)}.flogo img{display:block;width:100%;height:auto}
+footer{padding:40px 0 30px;font-size:.86rem;color:var(--mut);text-align:center}
+footer p{margin:0 0 10px}
+footer a{text-decoration:underline;text-underline-offset:3px}
+.flogo{width:110px;margin:0 auto 18px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--gold)}
 
 /* mobile dock */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hdbg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
-.dock a{flex:1;min-height:52px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:600;text-decoration:none}
-.dock .l{background:var(--navy);color:#fff;box-shadow:inset 0 -3px 0 #c9a14f}.dock .t{border:1px solid var(--line);background:var(--surface);color:var(--ink)}
-
-/* language menu */
-.lm{position:relative}
-.lmb{font:inherit;min-height:46px;min-width:62px;padding:0 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.lmb::after{content:"";width:7px;height:7px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-2px) rotate(45deg)}
-.fl{width:28px;height:19px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.18);display:block;flex:none}
-.lmenu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:170px;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:6px}
-.lmenu[hidden]{display:none}
-.lmenu button{font:inherit;display:flex;align-items:center;gap:12px;width:100%;min-height:46px;padding:0 12px;border:0;border-radius:6px;background:none;color:var(--ink);cursor:pointer;text-align:left}
-.lmenu button:hover,.lmenu button[aria-current="true"]{background:var(--accent-soft);font-weight:600}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hd);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.dock a{flex:1;min-height:52px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600}
+.dock .l{background:var(--navy);color:#fff;box-shadow:inset 0 -3px 0 var(--gold-soft)}
+.dock .t{border:1px solid var(--line2);background:var(--card)}
 
 /* LINE QR popup */
 .qm{position:fixed;inset:0;z-index:100;background:rgba(8,14,26,.74);display:grid;place-items:center;padding:20px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .qm[hidden]{display:none}
-.qc{position:relative;background:#fbf7ef;color:#14233f;border-radius:8px;padding:22px 22px 20px;width:min(100%,340px);text-align:center;border-top:4px solid #c9a14f;box-shadow:0 30px 60px rgba(0,0,0,.45)}
-.qc img{display:block;width:100%;height:auto;border-radius:4px}
+.qc{position:relative;background:#fbf7ef;color:#14233f;border-radius:20px;padding:22px 22px 20px;width:min(100%,340px);text-align:center;border-top:4px solid #c9a14f;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.qc img{width:100%;border-radius:8px}
 .qc p{margin:14px 0;font-weight:600;line-height:1.5}
-.qc .go{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:8px;background:#14233f;color:#fff;text-decoration:none;font-weight:600;box-shadow:inset 0 -3px 0 #c9a14f}
+.qc .go{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#14233f;color:#fff;font-weight:600;box-shadow:inset 0 -3px 0 #c9a14f}
 .qc .x{position:absolute;top:-16px;right:-8px;width:44px;height:44px;border-radius:50%;border:0;background:#14233f;color:#e6c98a;font-size:1.5rem;line-height:1;cursor:pointer;box-shadow:0 0 0 2px #c9a14f,0 6px 16px rgba(0,0,0,.35)}
-@media(max-width:639px){.chat{display:none}}
 
-/* booking */
-.bk,.bk-form{display:grid;gap:20px;max-width:680px}.bk h3{font-size:1.1rem}
-.days{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.day{font:inherit;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;cursor:pointer;color:var(--ink);min-height:64px;transition:border-color .15s}
-.day:hover{border-color:var(--accent)}
-.days>p{grid-column:1/-1}
-.day b{display:block;font-weight:600}.day small{color:var(--muted)}
-.day[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
-.day:disabled{opacity:.5;cursor:not-allowed}
-.fld{display:grid;gap:6px}.fld label{font-weight:600;font-size:.95rem}
-.fld input,.fld textarea{font:inherit;font-size:16px;min-height:52px;padding:10px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
-.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.fld textarea{min-height:96px;resize:vertical}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.msg{padding:14px 16px;border-radius:6px;font-size:.96rem;margin:0}.msg.ok{background:var(--accent-soft);border:1px solid var(--accent)}.msg.er{background:#fbecea;color:#7a1b1b;border:1px solid #e6b3ad}
-.sub{background:#14233f;color:#fff;border:0;border-radius:8px;min-height:56px;font:inherit;font-weight:700;font-size:1.05rem;cursor:pointer;box-shadow:inset 0 -3px 0 #c9a14f}.sub:disabled{opacity:.6;cursor:wait}
-:root[data-theme="dark"] .sub{background:#d6b062;color:#14233f;box-shadow:none}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .sub{background:#d6b062;color:#14233f;box-shadow:none}}
-.err{padding:40px 20px;text-align:center}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.err{padding:40px 22px;text-align:center}
 
-@media(min-width:640px){.days{grid-template-columns:repeat(3,1fr)}.btns{flex-direction:row}.btn{min-width:230px}.grid3{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.hero::after{left:20px;right:20px;top:20px;bottom:20px}}
-@media(min-width:900px){
- body{padding-bottom:0}.dock{display:none}.burger{display:none}
- .links{display:flex;position:static;flex-direction:row;gap:4px;background:none;border:0;box-shadow:none;padding:0}.links a{padding:10px 12px;border:0;color:var(--muted);font-size:.95rem}.links a:hover{color:var(--ink)}
- .hgrid{grid-template-columns:1.15fr .85fr;align-items:center}.docs{height:300px}.hero{padding:84px 0 120px}
- .grid3{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(4,1fr)}
- .cgrid{grid-template-columns:1.2fr .8fr;text-align:left;justify-items:stretch}.cgrid .qr{justify-self:center}.contact .btns{justify-content:flex-start}
- .sec{padding:84px 0}
+@media(min-width:640px){
+ .chat{display:inline-flex}
+ .days{grid-template-columns:repeat(3,1fr)}
+ .ledger li{grid-template-columns:60px 1fr auto;align-items:baseline}
+ .ledger .pr{grid-column:3;grid-row:1/3;text-align:right}
+ .stats div{padding-right:18px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}summary::after,.card::before,.btn{transition:none}}
+@media(min-width:960px){
+ body{padding-bottom:0}.dock,.burger{display:none}
+ .links{display:flex;position:static;flex-direction:row;gap:2px;background:none;border:0;box-shadow:none;padding:0;margin-right:8px}
+ .links a{padding:8px 12px;border:0;color:var(--mut);font-size:.95rem;border-radius:999px}
+ .links a:hover{color:var(--ink);background:var(--bg2)}
+ .hgrid{grid-template-columns:1.05fr .95fr}
+ .calc{grid-template-columns:1.1fr .9fr}
+ .slip{position:sticky;top:96px}
+ .route{grid-template-columns:repeat(4,1fr);gap:24px}
+ .route li{padding:64px 0 0}
+ .route li::before{top:0}
+ .route li::after{left:58px;right:-14px;top:22px;bottom:auto;width:auto;height:1px;background:repeating-linear-gradient(90deg,var(--gold) 0 5px,transparent 5px 10px)}
+ .split2{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+ .split2 .shd{position:sticky;top:110px}
+ .cgrid{grid-template-columns:1.2fr .8fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.pill,.pill .dot,.faq summary::after{transition:none}}
 </style>
 </head>
 <body>
@@ -184,11 +274,53 @@ const QR = "line-qr.jpg";
 const LOGO_MARK = "logo-mark.jpg";
 const LOGO_FULL = "logo.jpg";
 const PH = /(\[[^\]]+\])/;
-const ICONS = {
-  document: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
-  translate: '<path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 7 8M12 5c0 3-3 7-8 9"/><path d="M13 21l4-9 4 9M14.5 18h5"/>',
-  shield: '<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>'
+/* ราคาในเครื่องคำนวณ (บาท) ถ้าเปลี่ยนราคา แก้ตรงนี้ด้วย */
+const RATES = { general: 300, legal: 500, filing: 1500, copy: 700 };
+
+/* ข้อความเล็ก ๆ ของหน้าใหม่ แยก 3 ภาษา */
+const X = {
+  th: { eyebrow: "หัวหิน · รับงานทั่วประเทศ · ส่ง EMS", calc_cta: "คำนวณราคา",
+    sp_hint: "ลากเส้นเพื่อเทียบต้นฉบับกับฉบับแปล", sp_note: "ตัวอย่างงาน · ชื่อและข้อมูลในเอกสารเป็นข้อมูลสมมติ", sp_o: "ต้นฉบับ", sp_t: "ฉบับแปล", sp_aria: "เลื่อนเพื่อเทียบต้นฉบับกับฉบับแปล",
+    e_serv: "บริการ", e_calc: "ประเมินราคา", e_steps: "ขั้นตอน", e_book: "จองคิว", e_faq: "คำถาม", e_contact: "ติดต่อ",
+    c_title: "รู้ราคาคร่าว ๆ ก่อนทักแชต", c_tr: "งานแปล", c_none: "ไม่แปล", c_gen: "ทั่วไป", c_leg: "กฎหมาย",
+    c_pages: "จำนวนหน้า", c_add: "บริการเพิ่ม", c_file: "ยื่นนิติกรณ์ที่กรมการกงสุล", c_copy: "คัดเอกสารที่เขต/อำเภอ (เริ่มต้น)",
+    c_slip: "ใบประเมินราคา", c_total: "รวมโดยประมาณ", c_send: "ส่งยอดนี้ให้เราทาง LINE", c_empty: "เลือกบริการทางซ้ายเพื่อดูราคา",
+    c_gen_row: "แปลเอกสารทั่วไป", c_leg_row: "แปลเอกสารกฎหมาย", page: "หน้า", per: "/หน้า", minus: "ลดจำนวนหน้า", plus: "เพิ่มจำนวนหน้า", cur: "บาท",
+    r_note: "เอกสารเดินทางจากหัวหิน ไปกรมการกงสุลที่กรุงเทพฯ แล้วกลับถึงมือคุณทาง EMS โดยคุณไม่ต้องเดินทางเอง" },
+  en: { eyebrow: "Hua Hin · Nationwide · EMS delivery", calc_cta: "Estimate a price",
+    sp_hint: "Drag the line to compare original and translation", sp_note: "Sample work · names and details are fictional", sp_o: "Original", sp_t: "Translation", sp_aria: "Slide to compare original and translation",
+    e_serv: "Services", e_calc: "Estimate", e_steps: "How it works", e_book: "Booking", e_faq: "Questions", e_contact: "Contact",
+    c_title: "Know the price before you message", c_tr: "Translation", c_none: "None", c_gen: "General", c_leg: "Legal",
+    c_pages: "Pages", c_add: "Add services", c_file: "Legalization filing at Consular Affairs", c_copy: "Certified copy from district office (from)",
+    c_slip: "Price estimate", c_total: "Estimated total", c_send: "Send this estimate on LINE", c_empty: "Choose a service to see the price",
+    c_gen_row: "General translation", c_leg_row: "Legal translation", page: "pages", per: "/page", minus: "Fewer pages", plus: "More pages", cur: "THB",
+    r_note: "Your documents travel from Hua Hin to the Department of Consular Affairs in Bangkok and back to you by EMS. You never need to make the trip." },
+  zh: { eyebrow: "华欣 · 全国承接 · EMS 寄送", calc_cta: "估算价格",
+    sp_hint: "拖动分隔线，对比原件与译文", sp_note: "翻译样本 · 姓名与信息均为虚构", sp_o: "原件", sp_t: "译文", sp_aria: "滑动以对比原件与译文",
+    e_serv: "服务", e_calc: "估价", e_steps: "流程", e_book: "预约", e_faq: "问答", e_contact: "联系",
+    c_title: "联系前先了解大致价格", c_tr: "翻译", c_none: "不翻译", c_gen: "一般文件", c_leg: "法律文件",
+    c_pages: "页数", c_add: "附加服务", c_file: "领事司文件认证申请", c_copy: "代办调取文件（起价）",
+    c_slip: "估价单", c_total: "预计合计", c_send: "通过 LINE 发送此估价", c_empty: "请在左侧选择服务查看价格",
+    c_gen_row: "一般文件翻译", c_leg_row: "法律文件翻译", page: "页", per: "/页", minus: "减少页数", plus: "增加页数", cur: "泰铢",
+    r_note: "文件从华欣送往曼谷领事司，办好后通过 EMS 寄回给您，您无需亲自跑一趟。" }
 };
+
+const ICONS = {
+  arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  drag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>',
+  hand: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a2 2 0 1 1 4 0v5M11 10V4a2 2 0 1 1 4 0v6M15 10V6a2 2 0 1 1 4 0v8a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.5-4a1.8 1.8 0 0 1 3-2L7 14"/></svg>',
+  route: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></svg>'
+};
+const SPEC_O = '<div class="top"><span>สำเนา</span><span>คร. 3</span></div><h4>ใบสำคัญการสมรส</h4><dl>' +
+  '<dt>ทะเบียนเลขที่</dt><dd>1234/2567</dd><dt>วันจดทะเบียน</dt><dd>14 กุมภาพันธ์ 2567</dd>' +
+  '<dt>ฝ่ายชาย</dt><dd>นายสมชาย ใจดี</dd><dt>ฝ่ายหญิง</dt><dd>นางสาวสมหญิง รักไทย</dd>' +
+  '<dt>สถานที่จดทะเบียน</dt><dd>อำเภอหัวหิน จังหวัดประจวบคีรีขันธ์</dd></dl><div class="stamp">สำเนาถูกต้อง</div>';
+const SPEC_T = '<div class="top"><span>TRANSLATION</span><span>KOR ROR 3</span></div><h4>Marriage Certificate</h4><dl>' +
+  '<dt>Registration No.</dt><dd>1234/2567</dd><dt>Date of Registration</dt><dd>14 February 2024</dd>' +
+  '<dt>Husband</dt><dd>Mr. Somchai Jaidee</dd><dt>Wife</dt><dd>Miss Somying Rakthai</dd>' +
+  '<dt>Place of Registration</dt><dd>Hua Hin District, Prachuap Khiri Khan</dd></dl>' +
+  '<div class="cert">Certified true and accurate translation of the original.</div><div class="seal"><b>MOONNOS</b><small>CERTIFIED<br>TRANSLATION</small></div>';
+
 function txt(s) {
   const f = document.createDocumentFragment();
   String(s).split(PH).forEach((p) => {
@@ -204,20 +336,21 @@ function el(tag, cls, text, attrs) {
   if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
   return e;
 }
-function priceEl(s) {
-  const p = el("div", "price");
-  if (s.prefix) p.append(el("small", null, s.prefix + " "));
-  p.append(s.price + " ");
-  if (s.unit) p.append(el("small", null, s.unit));
-  return p;
+function pill(cls, label, attrs) {
+  const a = el(attrs && attrs.href ? "a" : "button", "pill " + cls, null, attrs);
+  if (!attrs || !attrs.href) a.type = "button";
+  a.append(el("span", null, label)); const d = el("span", "dot"); d.innerHTML = ICONS.arrow; a.append(d);
+  return a;
 }
-function sec(id, c, alt) {
-  const s = el("section", "sec" + (alt ? " alt" : ""), null, { id }), w = el("div", "wrap"), h = el("div", "sh");
-  h.append(el("h2", null, c.title));
-  if (c.lead) h.append(el("p", "lead", c.lead));
-  w.append(h); s.append(w);
-  return [s, w];
+function head(eb, title, lead) {
+  const h = el("div", "shd rv");
+  if (eb) h.append(el("span", "eb", eb));
+  h.append(el("h2", null, title));
+  if (lead) h.append(el("p", null, lead));
+  return h;
 }
+function section(id, cls) { const s = el("section", "sec" + (cls ? " " + cls : ""), null, { id }), w = el("div", "wrap"); s.append(w); return [s, w]; }
+
 const FLAGS = {
   th: '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#A51931"/><rect y="3.33" width="30" height="13.34" fill="#F4F5F8"/><rect y="6.67" width="30" height="6.66" fill="#2D2A4A"/></svg>',
   en: '<svg class="fl" viewBox="0 0 60 40" preserveAspectRatio="none" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#C8102E" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#C8102E" stroke-width="8"/></svg>',
@@ -225,6 +358,7 @@ const FLAGS = {
 };
 document.addEventListener("click", (e) => { const m = document.querySelector(".lmenu"); if (m && !m.hidden && !e.target.closest(".lm")) { m.hidden = true; const b = document.querySelector(".lmb"); if (b) b.setAttribute("aria-expanded", "false"); } });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") { const m = document.querySelector(".lmenu"); if (m && !m.hidden) { m.hidden = true; const b = document.querySelector(".lmb"); if (b) { b.setAttribute("aria-expanded", "false"); b.focus(); } } } });
+
 const QRTXT = { th: { open: "เปิดใน LINE", close: "ปิด" }, en: { open: "Open in LINE", close: "Close" }, zh: { open: "在 LINE 中打开", close: "关闭" } };
 let QM = null;
 function showQR(c) {
@@ -238,25 +372,132 @@ function showQR(c) {
   QM.textContent = "";
   const card = el("div", "qc"), x = el("button", "x", "×", { type: "button", "aria-label": t.close });
   x.onclick = () => { QM.hidden = true; };
-  const im = el("img", null, null, { src: QR, alt: u.qr_alt });
+  const im = el("img", null, null, { src: QR, alt: u.qr_alt, width: "300", height: "300" });
   const go = el("a", "go", t.open, { href: c.line_url, target: "_blank", rel: "noopener" });
   card.append(x, im, el("p", null, u.qr_cap), go);
   QM.append(card); QM.hidden = false; x.focus();
 }
 function bindQR(a, c) { a.addEventListener("click", (e) => { e.preventDefault(); showQR(c); }); }
+
 const LANGS = { th: { file: "content.json", loc: "th-TH", name: "ไทย" }, en: { file: "content.en.json", loc: "en-GB", name: "English" }, zh: { file: "content.zh.json", loc: "zh-CN", name: "中文" } };
 let LANG = "th";
+const money = (n) => Number(n).toLocaleString(LANGS[LANG].loc);
 function TH(s) {
   const [y, m, d] = s.split("-").map(Number);
   return new Date(y, m - 1, d).toLocaleDateString(LANGS[LANG].loc, { weekday: "short", day: "numeric", month: "short" });
 }
+
+/* ---------- hero specimen : drag to compare ---------- */
+function specimen(x) {
+  const wrap = el("div", "spec-wrap rv");
+  const sp = el("div", "spec");
+  const o = el("div", "sheet orig", null, { lang: "th" }); o.innerHTML = SPEC_O;
+  const t = el("div", "sheet tr", null, { lang: "en" }); t.innerHTML = SPEC_T;
+  const knob = el("div", "knob", null, { role: "slider", tabindex: "0", "aria-label": x.sp_aria, "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": "50" });
+  knob.innerHTML = ICONS.drag;
+  sp.append(o, t, el("div", "split"), knob, el("span", "tagl", x.sp_o), el("span", "tagr", x.sp_t));
+  const cap = el("div", "spec-cap"), cb = el("b");
+  cb.innerHTML = ICONS.hand; cb.append(x.sp_hint);
+  cap.append(cb, el("span", null, x.sp_note));
+  wrap.append(sp, cap);
+
+  let pos = 50, touched = false, dragging = false;
+  const set = (p) => { pos = Math.max(3, Math.min(97, p)); sp.style.setProperty("--pos", pos + "%"); knob.setAttribute("aria-valuenow", String(Math.round(pos))); };
+  const fromX = (cx) => { const r = sp.getBoundingClientRect(); set(((cx - r.left) / r.width) * 100); };
+  sp.addEventListener("pointerdown", (e) => { touched = true; dragging = true; fromX(e.clientX); if (e.target === knob) knob.setPointerCapture(e.pointerId); });
+  sp.addEventListener("pointermove", (e) => { if (dragging) fromX(e.clientX); });
+  window.addEventListener("pointerup", () => { dragging = false; });
+  sp.addEventListener("pointercancel", () => { dragging = false; });
+  knob.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft" || e.key === "ArrowDown") { touched = true; set(pos - 5); e.preventDefault(); }
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") { touched = true; set(pos + 5); e.preventDefault(); }
+  });
+  /* one gentle sweep on first view, so people see it moves */
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hint = () => {
+    if (reduce || touched) return;
+    const t0 = performance.now(), D = 2200;
+    const step = (now) => {
+      if (touched) return;
+      const k = Math.min(1, (now - t0) / D);
+      set(50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k * 0.3));
+      if (k < 1) requestAnimationFrame(step); else set(50);
+    };
+    requestAnimationFrame(step);
+  };
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((en) => { if (en[0].isIntersecting) { io.disconnect(); setTimeout(hint, 500); } }, { threshold: 0.5 });
+    io.observe(sp);
+  }
+  return wrap;
+}
+
+/* ---------- price calculator ---------- */
+function calculator(c, x) {
+  const [s, w] = section("pricing", "alt");
+  w.append(head(x.e_calc, x.c_title, c.pricing.lead));
+  const grid = el("div", "calc"), form = el("div", "panel rv"), slip = el("div", "slip rv", null, { "aria-live": "polite" });
+  const st = { tr: "general", pages: 1, filing: true, copy: false };
+
+  const f1 = el("fieldset", "q"); f1.append(el("legend", null, x.c_tr));
+  const seg = el("div", "seg");
+  [["none", x.c_none, ""], ["general", x.c_gen, money(RATES.general) + x.per], ["legal", x.c_leg, money(RATES.legal) + x.per]].forEach(([v, l, sm]) => {
+    const lab = el("label"), r = el("input", null, null, { type: "radio", name: "ctr", value: v });
+    if (v === st.tr) r.checked = true;
+    r.onchange = () => { st.tr = v; draw(); };
+    lab.append(r, l); if (sm) lab.append(el("small", null, sm)); seg.append(lab);
+  });
+  f1.append(seg);
+
+  const f2 = el("fieldset", "q"); f2.append(el("legend", null, x.c_pages));
+  const stp = el("div", "step"), mi = el("button", null, "−", { type: "button", "aria-label": x.minus }), pl = el("button", null, "+", { type: "button", "aria-label": x.plus }), out = el("output", "tab");
+  mi.onclick = () => { st.pages = Math.max(1, st.pages - 1); draw(); };
+  pl.onclick = () => { st.pages = Math.min(99, st.pages + 1); draw(); };
+  stp.append(mi, out, pl); f2.append(stp);
+
+  const f3 = el("fieldset", "q"); f3.append(el("legend", null, x.c_add));
+  const tog = (key, label, price) => {
+    const lab = el("label", "tog"), cb = el("input", null, null, { type: "checkbox" });
+    cb.checked = st[key]; cb.onchange = () => { st[key] = cb.checked; draw(); };
+    lab.append(cb, el("span", null, label), el("em", "tab", money(price)));
+    return lab;
+  };
+  f3.append(tog("filing", x.c_file, RATES.filing), tog("copy", x.c_copy, RATES.copy));
+  form.append(f1, f2, f3);
+
+  const sh = el("div", "h"); sh.append(el("b", null, x.c_slip), el("small", null, "MOONNOS"));
+  const rows = el("div", "rows"), tot = el("div", "t"), note = el("div", "n");
+  note.append(c.pricing.note, document.createElement("br"), c.example.disclaimer);
+  const send = pill("solid", x.c_send, { href: c.line_url }); bindQR(send, c);
+  slip.append(sh, rows, tot, note, send);
+
+  function draw() {
+    out.textContent = st.pages + " " + x.page;
+    mi.disabled = st.pages <= 1 || st.tr === "none"; pl.disabled = st.tr === "none";
+    stp.style.opacity = st.tr === "none" ? ".5" : "1";
+    rows.textContent = ""; let sum = 0;
+    const row = (l, v) => { const r = el("div", "r"); r.append(el("span", null, l), el("span", null, money(v) + " " + x.cur)); rows.append(r); sum += v; };
+    if (st.tr !== "none") row((st.tr === "legal" ? x.c_leg_row : x.c_gen_row) + " × " + st.pages + " " + x.page, RATES[st.tr] * st.pages);
+    if (st.filing) row(x.c_file, RATES.filing);
+    if (st.copy) row(x.c_copy, RATES.copy);
+    if (!sum) rows.append(el("div", "empty", x.c_empty));
+    tot.textContent = ""; tot.append(el("span", null, x.c_total), el("span", null, money(sum) + " " + x.cur));
+  }
+  draw();
+  grid.append(form, slip); w.append(grid);
+  return s;
+}
+
+/* ---------- booking (same logic as before) ---------- */
 function bk(c, p) {
   const r = p ? fetch(c.booking_api, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(p) }) : fetch(c.booking_api);
   return r.then((x) => x.json());
 }
-function booking(c) {
+function booking(c, x) {
   const u = c.ui;
-  const [s, w] = sec("booking", { title: u.bk_title, lead: u.bk_lead }, true);
+  const [s, w] = section("booking", "alt");
+  const lay = el("div", "split2");
+  lay.append(head(x.e_book, u.bk_title, u.bk_lead));
   const days = el("div", "days"), msg = el("div"), form = el("form", "bk-form");
   let pick = "";
   const F = (id, label, inner) => { const d = el("div", "fld"); d.append(el("label", null, label, { for: id })); d.insertAdjacentHTML("beforeend", inner); return d; };
@@ -268,7 +509,7 @@ function booking(c) {
   );
   const hp = el("div", "hp", null, { "aria-hidden": "true" }), hl = el("label", null, u.f_hp);
   hl.insertAdjacentHTML("beforeend", '<input name="website" tabindex="-1" autocomplete="off">'); hp.append(hl);
-  const sb = el("button", "sub", u.bk_submit, { type: "submit" });
+  const sb = pill("solid sub", u.bk_submit); sb.type = "submit";
   form.append(hp, sb);
   const h1 = el("h3", null, u.bk_step1), h2 = el("h3", null, u.bk_step2);
   async function load() {
@@ -277,12 +518,12 @@ function booking(c) {
       const r = await bk(c);
       if (!r.ok) throw new Error("load");
       days.textContent = "";
-      if (!r.slots.length) { days.append(el("p", "lead", u.bk_none)); return; }
-      r.slots.forEach((x) => {
-        const full = x.remaining < 1, b = el("button", "day", null, { type: "button", "aria-pressed": String(pick === x.date) });
+      if (!r.slots.length) { days.append(el("p", "msg", u.bk_none)); return; }
+      r.slots.forEach((d) => {
+        const full = d.remaining < 1, b = el("button", "day", null, { type: "button", "aria-pressed": String(pick === d.date) });
         b.disabled = full;
-        b.append(el("b", null, TH(x.date)), el("small", null, full ? u.bk_full : u.bk_left.replace("{n}", x.remaining)));
-        b.onclick = () => { pick = x.date; days.querySelectorAll(".day").forEach((d) => d.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); };
+        b.append(el("b", null, TH(d.date)), el("small", null, full ? u.bk_full : u.bk_left.replace("{n}", d.remaining)));
+        b.onclick = () => { pick = d.date; days.querySelectorAll(".day").forEach((z) => z.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); };
         days.append(b);
       });
     } catch (e) { days.textContent = ""; days.append(el("p", "msg er", u.bk_load_err)); }
@@ -290,31 +531,35 @@ function booking(c) {
   form.onsubmit = async (e) => {
     e.preventDefault(); msg.textContent = "";
     if (!pick) { msg.append(el("div", "msg er", u.bk_pick)); return; }
-    const fd = new FormData(form), btn = form.querySelector(".sub");
-    btn.disabled = true;
+    const fd = new FormData(form);
+    sb.disabled = true;
     try {
       const r = await bk(c, { date: pick, name: fd.get("name"), phone: fd.get("phone"), line: fd.get("line"), note: fd.get("note"), website: fd.get("website") });
       if (r.ok) { msg.append(el("div", "msg ok", u.bk_ok.replace("{d}", TH(pick)))); form.reset(); pick = ""; await load(); }
       else msg.append(el("div", "msg er", u.err[r.error] || u.bk_fail));
-    } catch (x) { msg.append(el("div", "msg er", u.bk_sys_err)); }
-    btn.disabled = false;
+    } catch (z) { msg.append(el("div", "msg er", u.bk_sys_err)); }
+    sb.disabled = false;
   };
-  const box = el("div", "bk");
-  box.append(h1, days, h2, form, msg); w.append(box);
+  const box = el("div", "panel bk rv");
+  box.append(h1, days, h2, form, msg);
+  lay.append(box); w.append(lay);
   load();
   return s;
 }
+
+/* ---------- page ---------- */
 function render(c) {
-  const u = c.ui;
+  const u = c.ui, x = X[LANG] || X.th;
   document.documentElement.lang = u.html_lang;
   document.title = u.title;
   const md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", u.desc);
   const app = document.getElementById("app");
   app.textContent = "";
 
+  /* header */
   const hd = el("header", "hd"), inn = el("div", "in");
   const brand = el("a", "brand", null, { href: "#top" });
-  const lg = el("img", "logo", null, { src: LOGO_MARK, alt: "" });
+  const lg = el("img", "logo", null, { src: LOGO_MARK, alt: "", width: "38", height: "38" });
   lg.onerror = () => lg.remove();
   brand.append(lg, c.brand.join(""));
   const links = el("nav", "links", null, { "aria-label": u.menu_aria, id: "menu" });
@@ -339,94 +584,98 @@ function render(c) {
   hd.append(inn);
 
   const main = el("main", null, null, { id: "top" });
-  const hero = el("div", "hero"), hw = el("div", "wrap hgrid"), left = el("div"), hb = el("div", "btns");
-  const heroA = el("a", "btn gold", c.hero.primary, { href: c.line_url }); bindQR(heroA, c);
-  hb.append(heroA, el("a", "btn ghost", c.hero.secondary.label, { href: c.hero.secondary.href }));
-  left.append(el("span", "badge", c.hero.badge), el("h1", null, c.hero.title), el("p", null, c.hero.text), hb);
-  const docs = el("div", "docs", null, { "aria-hidden": "true" });
-  docs.innerHTML = '<div class="sheet a"><em>TH</em><i></i><i></i><i class="s"></i><i></i></div><div class="sheet b"><em>EN</em><i></i><i></i><i class="s"></i><i></i></div>';
-  hw.append(left, docs); hero.append(hw);
 
-  const sw = el("div", "wrap"), sb = el("div", "statbox");
-  c.stats.forEach((s) => { const d = el("div", "stat"); d.append(el("b", null, s.big), el("span", null, s.small)); sb.append(d); });
-  sw.append(sb);
-  main.append(hero, sw);
+  /* hero */
+  const hero = el("section", "hero"), hw = el("div", "wrap hgrid"), left = el("div", "rv");
+  const hb = el("div", "hbtn");
+  const heroA = pill("solid", c.hero.primary, { href: c.line_url }); bindQR(heroA, c);
+  hb.append(heroA, pill("", x.calc_cta, { href: "#pricing" }));
+  const stats = el("dl", "stats");
+  c.stats.forEach((st) => { const d = el("div"); d.append(el("dt", null, st.big), el("dd", null, st.small)); stats.append(d); });
+  left.append(el("span", "eb", x.eyebrow), el("h1", null, c.hero.title), el("p", "lede", c.hero.text), hb, stats);
+  hw.append(left, specimen(x)); hero.append(hw);
+  main.append(hero);
 
-  let [s, w] = sec("services", c.services);
-  const g = el("div", "grid3");
-  c.services.items.forEach((it) => {
-    const card = el("div", "card rv"), ico = el("div", "ico");
-    ico.innerHTML = '<svg viewBox="0 0 24 24">' + (ICONS[it.icon] || ICONS.document) + "</svg>";
-    card.append(ico, el("h3", null, it.title), el("p", null, it.text), priceEl(it)); g.append(card);
+  /* services ledger */
+  let [s, w] = section("services");
+  w.append(head(x.e_serv, c.services.title, c.services.lead));
+  const ul = el("ol", "ledger");
+  c.services.items.forEach((it, i) => {
+    const li = el("li", "rv"), body = el("div"), pr = el("div", "pr tab");
+    body.append(el("h3", null, it.title), el("p", null, it.text));
+    if (it.prefix) pr.append(el("small", "pre", it.prefix));
+    pr.append(it.price); if (it.unit) pr.append(el("small", null, it.unit));
+    li.append(el("span", "no", String(i + 1).padStart(2, "0")), body, pr); ul.append(li);
   });
-  w.append(g); main.append(s);
+  w.append(ul); main.append(s);
 
-  [s, w] = sec("steps", c.steps, true);
-  const ol = el("ol", "steps");
-  c.steps.items.forEach((it, i) => { const li = el("li", "stp rv"); li.append(el("span", "n", String(i + 1)), el("b", null, it.title), el("span", null, it.text)); ol.append(li); });
-  w.append(ol); main.append(s);
+  /* calculator (replaces the old pricing + example blocks) */
+  main.append(calculator(c, x));
 
-  [s, w] = sec("example", c.example);
-  const rc = el("div", "receipt rv");
-  rc.append(el("div", "doc", c.example.doc));
-  c.example.rows.forEach((r) => { const d = el("div", "row"); d.append(el("span", null, r[0]), el("span", null, r[1])); rc.append(d); });
-  const t = el("div", "row total"); t.append(el("span", null, c.example.total[0]), el("span", null, c.example.total[1]));
-  const n = el("div", "note", c.example.note); n.append(document.createElement("br"), c.example.disclaimer);
-  rc.append(t, n); w.append(rc); main.append(s);
+  /* route */
+  [s, w] = section("steps");
+  w.append(head(x.e_steps, c.steps.title, c.steps.lead));
+  const ol = el("ol", "route");
+  c.steps.items.forEach((it) => { const li = el("li", "rv"); li.append(el("b", null, it.title), el("span", null, it.text)); ol.append(li); });
+  const rn = el("p", "rnote rv"); rn.innerHTML = ICONS.route; rn.append(el("span", null, x.r_note));
+  w.append(ol, rn); main.append(s);
 
-  [s, w] = sec("pricing", c.pricing, true);
-  const pg = el("div", "grid3");
-  c.pricing.items.forEach((it) => {
-    const p = el("div", "card pp rv");
-    p.append(el("h3", null, it.title));
-    if (it.lines) {
-      const q = el("p");
-      it.lines.forEach((l, i) => { if (i) q.append(document.createElement("br")); q.append(l[0] + " "); q.append(el("b", null, l[1])); });
-      p.append(q);
-    } else { const pr = priceEl(it); pr.style.border = "0"; pr.style.paddingTop = "0"; pr.style.marginTop = "0"; pr.style.marginBottom = "14px"; p.append(pr); }
-    p.append(el("div", "note", c.pricing.note)); pg.append(p);
-  });
-  w.append(pg); main.append(s);
+  /* booking */
+  if (c.booking_api) main.append(booking(c, x));
 
-  if (c.booking_api) main.append(booking(c));
+  /* faq */
+  [s, w] = section("faq");
+  const fl = el("div", "split2"), fq = el("div", "faq rv");
+  fl.append(head(x.e_faq, c.faq.title, c.faq.lead));
+  c.faq.items.forEach((it) => { const d = el("details"); d.append(el("summary", null, it.q), el("p", null, it.a)); fq.append(d); });
+  fl.append(fq); w.append(fl); main.append(s);
 
-  [s, w] = sec("faq", c.faq);
-  c.faq.items.forEach((it) => { const d = el("details", "rv"); d.append(el("summary", null, it.q), el("p", null, it.a)); w.append(d); });
-  main.append(s);
-
-  const ct = el("section", "contact", null, { id: "contact" }), cw = el("div", "wrap cgrid"), cl = el("div"), cb = el("div", "btns");
-  const lineA = el("a", "btn gold", c.contact.line_label, { href: c.line_url }); bindQR(lineA, c);
-  cb.append(lineA, el("a", "btn ghost", c.contact.phone_label, { href: c.contact.phone_href }));
-  cl.append(el("h2", null, c.contact.title), el("p", null, c.contact.text), cb);
-  const qr = el("div", "qr"), qi = el("img", null, null, { src: QR, alt: u.qr_alt });
+  /* contact */
+  const ct = el("section", "contact dark", null, { id: "contact" }), cw = el("div", "wrap cgrid"), cl = el("div", "rv"), cb = el("div", "cbtn");
+  const lineA = pill("gold", c.contact.line_label, { href: c.line_url }); bindQR(lineA, c);
+  cb.append(lineA, pill("light", c.contact.phone_label, { href: c.contact.phone_href }));
+  cl.append(el("span", "eb", x.e_contact), el("h2", null, c.contact.title), el("p", null, c.contact.text), cb);
+  const qr = el("div", "qr rv"), qi = el("img", null, null, { src: QR, alt: u.qr_alt, width: "300", height: "300", loading: "lazy" });
   qr.append(qi, el("span", null, u.qr_cap));
   cw.append(cl, qr); ct.append(cw); main.append(ct);
 
-  const f = el("footer"), fw = el("div", "wrap"), fb = el("p"), F = c.footer;
-  if (F.facebook_url) fb.append(el("a", null, F.facebook_label, { href: F.facebook_url, target: "_blank", rel: "noopener" }));
-  else fb.append(el("span", "ph", F.facebook_placeholder));
-  const fl = el("div", "flogo"), fi = el("img", null, null, { src: LOGO_FULL, alt: "MOONNOS" });
-  fi.onerror = () => fl.remove(); fl.append(fi);
-  fw.append(fl, fb, el("p", null, F.disclaimer), el("p", null, F.copyright)); f.append(fw);
+  /* footer */
+  const f = el("footer"), fw = el("div", "wrap"), fb = el("p"), FT = c.footer;
+  if (FT.facebook_url) fb.append(el("a", null, FT.facebook_label, { href: FT.facebook_url, target: "_blank", rel: "noopener" }));
+  else fb.append(el("span", "ph", FT.facebook_placeholder));
+  const flg = el("div", "flogo"), fi = el("img", null, null, { src: LOGO_FULL, alt: "MOONNOS", width: "110", height: "110", loading: "lazy" });
+  fi.onerror = () => flg.remove(); flg.append(fi);
+  fw.append(flg, fb, el("p", null, FT.disclaimer), el("p", null, FT.copyright)); f.append(fw);
 
+  /* mobile dock */
   const dock = el("div", "dock");
   const dockA = el("a", "l", u.dock_line, { href: c.line_url }); bindQR(dockA, c);
   dock.append(dockA, el("a", "t", u.dock_call, { href: c.contact.phone_href }));
 
   app.append(hd, main, f, dock);
-
+  reveal();
 }
+
+/* gentle reveal, with a failsafe so nothing can stay hidden */
+function reveal() {
+  const els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("in")); return; }
+  const io = new IntersectionObserver((en) => en.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  els.forEach((e) => io.observe(e));
+  setTimeout(() => els.forEach((e) => e.classList.add("in")), 2600);
+}
+
 function setLang(k) {
   if (!LANGS[k]) k = "th";
   LANG = k;
   try { localStorage.setItem("lang", k); } catch (e) {}
   fetch(LANGS[k].file, { cache: "no-cache" }).then((r) => r.json()).then(render).catch(() => {
-    document.getElementById("app").innerHTML = '<p class="err">โหลดข้อมูลหน้าเว็บไม่สำเร็จ กรุณารีเฟรชหน้าอีกครั้ง / Could not load the page. Please refresh. / 页面加载失败,请刷新。</p>';
+    document.getElementById("app").innerHTML = '<p class="err">โหลดข้อมูลหน้าเว็บไม่สำเร็จ กรุณารีเฟรชหน้าอีกครั้ง / Could not load the page. Please refresh. / 页面加载失败，请刷新。</p>';
   });
 }
 (function () {
   let k = "th";
-  try { localStorage.setItem; k = localStorage.getItem("lang") || "th"; } catch (e) {}
+  try { k = localStorage.getItem("lang") || "th"; } catch (e) {}
   const q = new URLSearchParams(location.search).get("lang");
   if (q && LANGS[q]) k = q;
   setLang(k);
