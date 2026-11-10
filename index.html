@@ -84,20 +84,10 @@ button{font:inherit;color:inherit}
 
 /* the specimen : drag to compare original and translation */
 .spec-wrap{position:relative}
-.spec{position:relative;aspect-ratio:4/5;max-width:470px;margin:0 auto;border-radius:6px;box-shadow:var(--lift);touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none;--pos:50%;transform:rotate(-1.2deg)}
-.sheet{position:absolute;inset:0;background:var(--paper);color:#1d2638;border-radius:6px;padding:13% 8% 7%;overflow:hidden;font-size:clamp(10.5px,1.55vw,13px);line-height:1.5}
-.sheet.tr{clip-path:inset(0 0 0 var(--pos));background:#fdfaf2;font-family:var(--serif)}
-.sheet .top{display:flex;justify-content:space-between;font-size:.82em;letter-spacing:.12em;color:#7b7f8a;padding-bottom:4%;border-bottom:1px solid #e7e0cf}
-.sheet h4{font-size:1.65em;line-height:1.25;color:#14233f;margin:6% 0 4%;text-align:center}
-.sheet.orig h4{font-family:var(--sans);font-weight:700}
-.sheet dl{display:grid;grid-template-columns:42% 1fr;margin:0;row-gap:0}
-.sheet dt,.sheet dd{margin:0;min-height:2.9em;padding:.45em 0;border-bottom:1px dotted #d8cfbb}
-.sheet dt{color:#7b7f8a;padding-right:8px}
-.sheet dd{font-weight:600;color:#14233f}
-.stamp{position:absolute;left:9%;bottom:9%;padding:.35em .9em;border:2px solid rgba(163,38,28,.7);color:rgba(163,38,28,.8);font-weight:700;font-size:1.05em;border-radius:4px;transform:rotate(-8deg);letter-spacing:.06em}
-.seal{position:absolute;right:7%;bottom:5%;width:24%;aspect-ratio:1;border-radius:50%;border:2px solid #b38a36;box-shadow:inset 0 0 0 4px #fdfaf2,inset 0 0 0 5px rgba(179,138,54,.7);display:grid;place-content:center;text-align:center;color:#8a6520;transform:rotate(-10deg)}
-.seal b{font-size:1em;letter-spacing:.14em}.seal small{font-size:.62em;letter-spacing:.12em;line-height:1.3;font-family:var(--sans);font-weight:700}
-.cert{position:absolute;left:8%;right:40%;bottom:8%;font-size:.78em;color:#5d6270;font-style:italic;border-top:1px solid #1d2638;padding-top:.5em}
+.spec{position:relative;aspect-ratio:900/1208;max-width:460px;margin:0 auto;border-radius:6px;box-shadow:var(--lift);touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none;--pos:50%;transform:rotate(-1.2deg);background:#fff}
+.sheet{position:absolute;inset:0;border-radius:6px;overflow:hidden;background:#fff}
+.sheet img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.sheet.tr{clip-path:inset(0 0 0 var(--pos))}
 .split{position:absolute;top:-10px;bottom:-10px;left:var(--pos);width:2px;margin-left:-1px;background:var(--gold);pointer-events:none}
 .knob{position:absolute;top:50%;left:var(--pos);width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--navy);color:var(--gold-soft);display:grid;place-items:center;box-shadow:0 0 0 4px rgba(214,176,98,.35),0 8px 20px rgba(0,0,0,.3);cursor:ew-resize;touch-action:none}
 .knob svg{width:22px;height:22px}
@@ -280,7 +270,8 @@ const RATES = { general: 300, legal: 500, filing: 1500, copy: 700 };
 /* ข้อความเล็ก ๆ ของหน้าใหม่ แยก 3 ภาษา */
 const X = {
   th: { eyebrow: "หัวหิน · รับงานทั่วประเทศ · ส่ง EMS", calc_cta: "คำนวณราคา",
-    sp_hint: "ลากเส้นเพื่อเทียบต้นฉบับกับฉบับแปล", sp_note: "ตัวอย่างงาน · ชื่อและข้อมูลในเอกสารเป็นข้อมูลสมมติ", sp_o: "ต้นฉบับ", sp_t: "ฉบับแปล", sp_aria: "เลื่อนเพื่อเทียบต้นฉบับกับฉบับแปล",
+    sp_hint: "ลากเส้นเพื่อเทียบต้นฉบับกับฉบับแปล", sp_note: "ตัวอย่างงานจริง สูติบัตร · ข้อมูลส่วนตัวเบลอทั้งหมด", sp_o: "ต้นฉบับ", sp_t: "ฉบับแปล", sp_aria: "เลื่อนเพื่อเทียบต้นฉบับกับฉบับแปล",
+    sp_alt_o: "สูติบัตรต้นฉบับภาษาไทย ข้อมูลส่วนตัวถูกเบลอ", sp_alt_t: "คำแปลสูติบัตรภาษาอังกฤษ ข้อมูลส่วนตัวถูกเบลอ",
     e_serv: "บริการ", e_calc: "ประเมินราคา", e_steps: "ขั้นตอน", e_book: "จองคิว", e_faq: "คำถาม", e_contact: "ติดต่อ",
     c_title: "รู้ราคาคร่าว ๆ ก่อนทักแชต", c_tr: "งานแปล", c_none: "ไม่แปล", c_gen: "ทั่วไป", c_leg: "กฎหมาย",
     c_pages: "จำนวนหน้า", c_add: "บริการเพิ่ม", c_file: "ยื่นนิติกรณ์ที่กรมการกงสุล", c_copy: "คัดเอกสารที่เขต/อำเภอ (เริ่มต้น)",
@@ -288,7 +279,8 @@ const X = {
     c_gen_row: "แปลเอกสารทั่วไป", c_leg_row: "แปลเอกสารกฎหมาย", page: "หน้า", per: "/หน้า", minus: "ลดจำนวนหน้า", plus: "เพิ่มจำนวนหน้า", cur: "บาท",
     r_note: "เอกสารเดินทางจากหัวหิน ไปกรมการกงสุลที่กรุงเทพฯ แล้วกลับถึงมือคุณทาง EMS โดยคุณไม่ต้องเดินทางเอง" },
   en: { eyebrow: "Hua Hin · Nationwide · EMS delivery", calc_cta: "Estimate a price",
-    sp_hint: "Drag the line to compare original and translation", sp_note: "Sample work · names and details are fictional", sp_o: "Original", sp_t: "Translation", sp_aria: "Slide to compare original and translation",
+    sp_hint: "Drag the line to compare original and translation", sp_note: "Real work, a birth certificate · all personal details blurred", sp_o: "Original", sp_t: "Translation", sp_aria: "Slide to compare original and translation",
+    sp_alt_o: "Original Thai birth certificate with personal details blurred", sp_alt_t: "English translation of the birth certificate with personal details blurred",
     e_serv: "Services", e_calc: "Estimate", e_steps: "How it works", e_book: "Booking", e_faq: "Questions", e_contact: "Contact",
     c_title: "Know the price before you message", c_tr: "Translation", c_none: "None", c_gen: "General", c_leg: "Legal",
     c_pages: "Pages", c_add: "Add services", c_file: "Legalization filing at Consular Affairs", c_copy: "Certified copy from district office (from)",
@@ -296,7 +288,8 @@ const X = {
     c_gen_row: "General translation", c_leg_row: "Legal translation", page: "pages", per: "/page", minus: "Fewer pages", plus: "More pages", cur: "THB",
     r_note: "Your documents travel from Hua Hin to the Department of Consular Affairs in Bangkok and back to you by EMS. You never need to make the trip." },
   zh: { eyebrow: "华欣 · 全国承接 · EMS 寄送", calc_cta: "估算价格",
-    sp_hint: "拖动分隔线，对比原件与译文", sp_note: "翻译样本 · 姓名与信息均为虚构", sp_o: "原件", sp_t: "译文", sp_aria: "滑动以对比原件与译文",
+    sp_hint: "拖动分隔线，对比原件与译文", sp_note: "真实案例：出生证明 · 个人信息已全部模糊处理", sp_o: "原件", sp_t: "译文", sp_aria: "滑动以对比原件与译文",
+    sp_alt_o: "泰文出生证明原件，个人信息已模糊处理", sp_alt_t: "出生证明英文译文，个人信息已模糊处理",
     e_serv: "服务", e_calc: "估价", e_steps: "流程", e_book: "预约", e_faq: "问答", e_contact: "联系",
     c_title: "联系前先了解大致价格", c_tr: "翻译", c_none: "不翻译", c_gen: "一般文件", c_leg: "法律文件",
     c_pages: "页数", c_add: "附加服务", c_file: "领事司文件认证申请", c_copy: "代办调取文件（起价）",
@@ -311,15 +304,9 @@ const ICONS = {
   hand: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a2 2 0 1 1 4 0v5M11 10V4a2 2 0 1 1 4 0v6M15 10V6a2 2 0 1 1 4 0v8a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.5-4a1.8 1.8 0 0 1 3-2L7 14"/></svg>',
   route: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></svg>'
 };
-const SPEC_O = '<div class="top"><span>สำเนา</span><span>คร. 3</span></div><h4>ใบสำคัญการสมรส</h4><dl>' +
-  '<dt>ทะเบียนเลขที่</dt><dd>1234/2567</dd><dt>วันจดทะเบียน</dt><dd>14 กุมภาพันธ์ 2567</dd>' +
-  '<dt>ฝ่ายชาย</dt><dd>นายสมชาย ใจดี</dd><dt>ฝ่ายหญิง</dt><dd>นางสาวสมหญิง รักไทย</dd>' +
-  '<dt>สถานที่จดทะเบียน</dt><dd>อำเภอหัวหิน จังหวัดประจวบคีรีขันธ์</dd></dl><div class="stamp">สำเนาถูกต้อง</div>';
-const SPEC_T = '<div class="top"><span>TRANSLATION</span><span>KOR ROR 3</span></div><h4>Marriage Certificate</h4><dl>' +
-  '<dt>Registration No.</dt><dd>1234/2567</dd><dt>Date of Registration</dt><dd>14 February 2024</dd>' +
-  '<dt>Husband</dt><dd>Mr. Somchai Jaidee</dd><dt>Wife</dt><dd>Miss Somying Rakthai</dd>' +
-  '<dt>Place of Registration</dt><dd>Hua Hin District, Prachuap Khiri Khan</dd></dl>' +
-  '<div class="cert">Certified true and accurate translation of the original.</div><div class="seal"><b>MOONNOS</b><small>CERTIFIED<br>TRANSLATION</small></div>';
+/* รูปตัวอย่างงาน (ข้อมูลส่วนตัวเบลอแล้ว) ต้องอัปโหลด 2 ไฟล์นี้ไว้คู่กับ index.html */
+const SAMPLE_TH = "sample-th.jpg";
+const SAMPLE_EN = "sample-en.jpg";
 
 function txt(s) {
   const f = document.createDocumentFragment();
@@ -391,8 +378,9 @@ function TH(s) {
 function specimen(x) {
   const wrap = el("div", "spec-wrap rv");
   const sp = el("div", "spec");
-  const o = el("div", "sheet orig", null, { lang: "th" }); o.innerHTML = SPEC_O;
-  const t = el("div", "sheet tr", null, { lang: "en" }); t.innerHTML = SPEC_T;
+  const o = el("div", "sheet orig"), t = el("div", "sheet tr");
+  o.append(el("img", null, null, { src: SAMPLE_TH, alt: x.sp_alt_o, width: "900", height: "1208", draggable: "false", decoding: "async" }));
+  t.append(el("img", null, null, { src: SAMPLE_EN, alt: x.sp_alt_t, width: "900", height: "1208", draggable: "false", decoding: "async" }));
   const knob = el("div", "knob", null, { role: "slider", tabindex: "0", "aria-label": x.sp_aria, "aria-valuemin": "0", "aria-valuemax": "100", "aria-valuenow": "50" });
   knob.innerHTML = ICONS.drag;
   sp.append(o, t, el("div", "split"), knob, el("span", "tagl", x.sp_o), el("span", "tagr", x.sp_t));
