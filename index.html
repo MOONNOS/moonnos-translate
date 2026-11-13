@@ -277,7 +277,8 @@ const X = {
     c_pages: "จำนวนหน้า", c_add: "บริการเพิ่ม", c_file: "ยื่นนิติกรณ์ที่กรมการกงสุล", c_copy: "คัดเอกสารที่เขต/อำเภอ (เริ่มต้น)",
     c_slip: "ใบประเมินราคา", c_total: "รวมโดยประมาณ", c_send: "ส่งยอดนี้ให้เราทาง LINE", c_empty: "เลือกบริการทางซ้ายเพื่อดูราคา",
     c_gen_row: "แปลเอกสารทั่วไป", c_leg_row: "แปลเอกสารกฎหมาย", page: "หน้า", per: "/หน้า", minus: "ลดจำนวนหน้า", plus: "เพิ่มจำนวนหน้า", cur: "บาท",
-    r_note: "เอกสารเดินทางจากหัวหิน ไปกรมการกงสุลที่กรุงเทพฯ แล้วกลับถึงมือคุณทาง EMS โดยคุณไม่ต้องเดินทางเอง" },
+    r_note: "เอกสารเดินทางจากหัวหิน ไปกรมการกงสุลที่กรุงเทพฯ แล้วกลับถึงมือคุณทาง EMS โดยคุณไม่ต้องเดินทางเอง",
+    f_idno: "เลขบัตรประชาชน หรือเลขพาสปอร์ต (ถ้ามี)", idno_tag: "เลขบัตร/พาสปอร์ต" },
   en: { eyebrow: "Hua Hin · Nationwide · EMS delivery", calc_cta: "Estimate a price",
     sp_hint: "Drag the line to compare original and translation", sp_note: "Real work, a birth certificate · all personal details blurred", sp_o: "Original", sp_t: "Translation", sp_aria: "Slide to compare original and translation",
     sp_alt_o: "Original Thai birth certificate with personal details blurred", sp_alt_t: "English translation of the birth certificate with personal details blurred",
@@ -286,7 +287,8 @@ const X = {
     c_pages: "Pages", c_add: "Add services", c_file: "Legalization filing at Consular Affairs", c_copy: "Certified copy from district office (from)",
     c_slip: "Price estimate", c_total: "Estimated total", c_send: "Send this estimate on LINE", c_empty: "Choose a service to see the price",
     c_gen_row: "General translation", c_leg_row: "Legal translation", page: "pages", per: "/page", minus: "Fewer pages", plus: "More pages", cur: "THB",
-    r_note: "Your documents travel from Hua Hin to the Department of Consular Affairs in Bangkok and back to you by EMS. You never need to make the trip." },
+    r_note: "Your documents travel from Hua Hin to the Department of Consular Affairs in Bangkok and back to you by EMS. You never need to make the trip.",
+    f_idno: "Thai ID card or passport number (optional)", idno_tag: "เลขบัตร/พาสปอร์ต" },
   zh: { eyebrow: "华欣 · 全国承接 · EMS 寄送", calc_cta: "估算价格",
     sp_hint: "拖动分隔线，对比原件与译文", sp_note: "真实案例：出生证明 · 个人信息已全部模糊处理", sp_o: "原件", sp_t: "译文", sp_aria: "滑动以对比原件与译文",
     sp_alt_o: "泰文出生证明原件，个人信息已模糊处理", sp_alt_t: "出生证明英文译文，个人信息已模糊处理",
@@ -295,7 +297,8 @@ const X = {
     c_pages: "页数", c_add: "附加服务", c_file: "领事司文件认证申请", c_copy: "代办调取文件（起价）",
     c_slip: "估价单", c_total: "预计合计", c_send: "通过 LINE 发送此估价", c_empty: "请在左侧选择服务查看价格",
     c_gen_row: "一般文件翻译", c_leg_row: "法律文件翻译", page: "页", per: "/页", minus: "减少页数", plus: "增加页数", cur: "泰铢",
-    r_note: "文件从华欣送往曼谷领事司，办好后通过 EMS 寄回给您，您无需亲自跑一趟。" }
+    r_note: "文件从华欣送往曼谷领事司，办好后通过 EMS 寄回给您，您无需亲自跑一趟。",
+    f_idno: "泰国身份证号或护照号码（选填）", idno_tag: "เลขบัตร/พาสปอร์ต" }
 };
 
 const ICONS = {
@@ -493,7 +496,8 @@ function booking(c, x) {
     F("bn", u.f_name, '<input id="bn" name="name" autocomplete="name" required maxlength="80">'),
     F("bp", u.f_phone, '<input id="bp" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="20">'),
     F("bl", u.f_line, '<input id="bl" name="line" maxlength="60">'),
-    F("bt", u.f_note, '<textarea id="bt" name="note" rows="3" maxlength="300"></textarea>')
+    F("bi", x.f_idno, '<input id="bi" name="idno" maxlength="30" autocomplete="off" autocapitalize="characters" spellcheck="false">'),
+    F("bt", u.f_note, '<textarea id="bt" name="note" rows="3" maxlength="250"></textarea>')
   );
   const hp = el("div", "hp", null, { "aria-hidden": "true" }), hl = el("label", null, u.f_hp);
   hl.insertAdjacentHTML("beforeend", '<input name="website" tabindex="-1" autocomplete="off">'); hp.append(hl);
@@ -522,7 +526,10 @@ function booking(c, x) {
     const fd = new FormData(form);
     sb.disabled = true;
     try {
-      const r = await bk(c, { date: pick, name: fd.get("name"), phone: fd.get("phone"), line: fd.get("line"), note: fd.get("note"), website: fd.get("website") });
+      // เลขบัตร/พาสปอร์ต (ไม่บังคับ) ส่งไปรวมกับหมายเหตุ หลังร้านจะเห็นในรายชื่อผู้จอง
+      const idno = String(fd.get("idno") || "").trim(), nt = String(fd.get("note") || "").trim();
+      const note = (idno ? x.idno_tag + ": " + idno + (nt ? " · " : "") : "") + nt;
+      const r = await bk(c, { date: pick, name: fd.get("name"), phone: fd.get("phone"), line: fd.get("line"), note, website: fd.get("website") });
       if (r.ok) { msg.append(el("div", "msg ok", u.bk_ok.replace("{d}", TH(pick)))); form.reset(); pick = ""; await load(); }
       else msg.append(el("div", "msg er", u.err[r.error] || u.bk_fail));
     } catch (z) { msg.append(el("div", "msg er", u.bk_sys_err)); }
