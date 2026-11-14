@@ -36,7 +36,7 @@
   },
   "stats": [
     {
-      "big": "3 services",
+      "big": "4 services",
       "small": "All in one place"
     },
     {
@@ -73,6 +73,13 @@
         "text": "We check your documents, book the queue and file them at the Department of Consular Affairs on your behalf. It usually takes about 3–4 working days.",
         "price": "1,500",
         "unit": "THB"
+      },
+      {
+        "icon": "rings",
+        "title": "Marriage registration",
+        "text": "Included in the price: express booking for your marriage registration · a locked-in registration date · an interpreter and witnesses arranged for you · on the day, we check the key details on your marriage certificate are correct.",
+        "price": "Ask for a quote",
+        "unit": ""
       }
     ]
   },
