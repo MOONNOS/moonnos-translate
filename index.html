@@ -77,7 +77,9 @@ button{font:inherit;color:inherit}
 .burger{width:44px;height:44px;border:1px solid var(--line);background:var(--card);border-radius:999px;display:grid;place-content:center;gap:5px;cursor:pointer}
 .burger i{display:block;width:18px;height:1.5px;background:var(--ink);border-radius:2px}
 .lm{position:relative}
-.lmb{min-height:44px;min-width:60px;padding:0 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.lmb{min-height:44px;min-width:60px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.lmb .gl{width:19px;height:19px;flex:none;color:var(--gold-ink)}
+.lmb b{font-size:.9rem;font-weight:700;letter-spacing:.03em;white-space:nowrap}
 .lmb::after{content:"";width:6px;height:6px;border-right:1.5px solid var(--mut);border-bottom:1.5px solid var(--mut);transform:translateY(-2px) rotate(45deg)}
 .fl{width:26px;height:18px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.18);display:block;flex:none}
 .lmenu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;min-width:172px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:6px}
@@ -325,6 +327,7 @@ const ICONS = {
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   drag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>',
   hand: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a2 2 0 1 1 4 0v5M11 10V4a2 2 0 1 1 4 0v6M15 10V6a2 2 0 1 1 4 0v8a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.5-4a1.8 1.8 0 0 1 3-2L7 14"/></svg>',
+  globe: '<svg class="gl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
   lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
   route: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></svg>'
 };
@@ -390,7 +393,7 @@ function showQR(c) {
 }
 function bindQR(a, c) { a.addEventListener("click", (e) => { e.preventDefault(); showQR(c); }); }
 
-const LANGS = { th: { file: "content.json", loc: "th-TH", name: "ไทย" }, en: { file: "content.en.json", loc: "en-GB", name: "English" }, zh: { file: "content.zh.json", loc: "zh-CN", name: "中文" } };
+const LANGS = { th: { file: "content.json", loc: "th-TH", name: "ไทย", code: "TH" }, en: { file: "content.en.json", loc: "en-GB", name: "English", code: "EN" }, zh: { file: "content.zh.json", loc: "zh-CN", name: "中文", code: "中文" } };
 let LANG = "th";
 const money = (n) => Number(n).toLocaleString(LANGS[LANG].loc);
 function TH(s) {
@@ -585,8 +588,9 @@ function render(c) {
   burger.innerHTML = "<i></i><i></i><i></i>";
   burger.onclick = () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", String(o)); };
   links.addEventListener("click", (e) => { if (e.target.tagName === "A") { links.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); } });
-  const lm = el("div", "lm"), lb = el("button", "lmb", null, { type: "button", "aria-haspopup": "true", "aria-expanded": "false", "aria-label": u.lang_aria + ": " + LANGS[LANG].name });
-  lb.innerHTML = FLAGS[LANG];
+  const lm = el("div", "lm"), lb = el("button", "lmb", null, { type: "button", "aria-haspopup": "true", "aria-expanded": "false", "aria-label": u.lang_aria + ": " + LANGS[LANG].name, title: "ภาษา · Language · 语言" });
+  /* ปุ่มเปลี่ยนภาษา: รูปลูกโลก + ตัวย่อภาษา ให้คนทุกชาติรู้ว่ากดเปลี่ยนภาษาได้ */
+  lb.innerHTML = ICONS.globe; lb.append(el("b", null, LANGS[LANG].code));
   const lmenu = el("div", "lmenu", null, { role: "menu" }); lmenu.hidden = true;
   Object.keys(LANGS).forEach((k) => {
     const b = el("button", null, null, { type: "button", role: "menuitem", lang: k, "aria-current": String(k === LANG) });
@@ -690,9 +694,18 @@ function setLang(k) {
     document.getElementById("app").innerHTML = '<p class="err">โหลดข้อมูลหน้าเว็บไม่สำเร็จ กรุณารีเฟรชหน้าอีกครั้ง / Could not load the page. Please refresh. / 页面加载失败，请刷新。</p>';
   });
 }
+/* เข้าครั้งแรก: เลือกภาษาตามที่ตั้งไว้ในมือถือ/คอมของลูกค้า
+   มีภาษาไทยในรายการ = ไทย, ภาษาจีนมาก่อน = จีน, นอกนั้น = อังกฤษ */
+function browserLang() {
+  const ls = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "th"]).map((s) => String(s).toLowerCase());
+  if (ls.some((s) => s.startsWith("th"))) return "th";
+  if (ls[0].startsWith("zh")) return "zh";
+  return "en";
+}
 (function () {
-  let k = "th";
-  try { k = localStorage.getItem("lang") || "th"; } catch (e) {}
+  let k = "";
+  try { k = localStorage.getItem("lang") || ""; } catch (e) {}
+  if (!LANGS[k]) k = browserLang();
   const q = new URLSearchParams(location.search).get("lang");
   if (q && LANGS[q]) k = q;
   setLang(k);
