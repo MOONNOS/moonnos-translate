@@ -178,6 +178,8 @@ button{font:inherit;color:inherit}
 .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-wash)}
 .fld textarea{min-height:96px;resize:vertical}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.pv{display:flex;gap:10px;align-items:flex-start;margin:0;font-size:.86rem;line-height:1.6;color:var(--mut)}
+.pv svg{width:18px;height:18px;flex:none;color:var(--gold);margin-top:2px}
 .msg{padding:14px 16px;border-radius:12px;font-size:.95rem;margin:0}
 .msg.ok{background:var(--gold-wash);border:1px solid var(--gold)}
 .msg.er{background:#fbecea;color:#7a1b1b;border:1px solid #e6b3ad}
@@ -278,7 +280,8 @@ const X = {
     c_slip: "ใบประเมินราคา", c_total: "รวมโดยประมาณ", c_send: "ส่งยอดนี้ให้เราทาง LINE", c_empty: "เลือกบริการทางซ้ายเพื่อดูราคา",
     c_gen_row: "แปลเอกสารทั่วไป", c_leg_row: "แปลเอกสารกฎหมาย", page: "หน้า", per: "/หน้า", minus: "ลดจำนวนหน้า", plus: "เพิ่มจำนวนหน้า", cur: "บาท",
     r_note: "เอกสารเดินทางจากหัวหิน ไปกรมการกงสุลที่กรุงเทพฯ แล้วกลับถึงมือคุณทาง EMS โดยคุณไม่ต้องเดินทางเอง",
-    f_idno: "เลขบัตรประชาชน หรือเลขพาสปอร์ต (ถ้ามี)", idno_tag: "เลขบัตร/พาสปอร์ต" },
+    f_idno: "เลขบัตรประชาชน หรือเลขพาสปอร์ต (ถ้ามี)", idno_tag: "เลขบัตร/พาสปอร์ต",
+    privacy: "ข้อมูลนี้ใช้เพื่อนัดหมายและติดต่อเรื่องงานของคุณเท่านั้น เปิดดูได้เฉพาะเจ้าหน้าที่ของร้าน และระบบจะลบอัตโนมัติภายใน 30 วันหลังวันนัด" },
   en: { eyebrow: "Hua Hin · Nationwide · EMS delivery", calc_cta: "Estimate a price",
     sp_hint: "Drag the line to compare original and translation", sp_note: "Real work, a birth certificate · all personal details blurred", sp_o: "Original", sp_t: "Translation", sp_aria: "Slide to compare original and translation",
     sp_alt_o: "Original Thai birth certificate with personal details blurred", sp_alt_t: "English translation of the birth certificate with personal details blurred",
@@ -288,7 +291,8 @@ const X = {
     c_slip: "Price estimate", c_total: "Estimated total", c_send: "Send this estimate on LINE", c_empty: "Choose a service to see the price",
     c_gen_row: "General translation", c_leg_row: "Legal translation", page: "pages", per: "/page", minus: "Fewer pages", plus: "More pages", cur: "THB",
     r_note: "Your documents travel from Hua Hin to the Department of Consular Affairs in Bangkok and back to you by EMS. You never need to make the trip.",
-    f_idno: "Thai ID card or passport number (optional)", idno_tag: "เลขบัตร/พาสปอร์ต" },
+    f_idno: "Thai ID card or passport number (optional)", idno_tag: "เลขบัตร/พาสปอร์ต",
+    privacy: "We use these details only to schedule and contact you about your job. Only our staff can see them, and they are deleted automatically within 30 days after your appointment." },
   zh: { eyebrow: "华欣 · 全国承接 · EMS 寄送", calc_cta: "估算价格",
     sp_hint: "拖动分隔线，对比原件与译文", sp_note: "真实案例：出生证明 · 个人信息已全部模糊处理", sp_o: "原件", sp_t: "译文", sp_aria: "滑动以对比原件与译文",
     sp_alt_o: "泰文出生证明原件，个人信息已模糊处理", sp_alt_t: "出生证明英文译文，个人信息已模糊处理",
@@ -298,13 +302,15 @@ const X = {
     c_slip: "估价单", c_total: "预计合计", c_send: "通过 LINE 发送此估价", c_empty: "请在左侧选择服务查看价格",
     c_gen_row: "一般文件翻译", c_leg_row: "法律文件翻译", page: "页", per: "/页", minus: "减少页数", plus: "增加页数", cur: "泰铢",
     r_note: "文件从华欣送往曼谷领事司，办好后通过 EMS 寄回给您，您无需亲自跑一趟。",
-    f_idno: "泰国身份证号或护照号码（选填）", idno_tag: "เลขบัตร/พาสปอร์ต" }
+    f_idno: "泰国身份证号或护照号码（选填）", idno_tag: "เลขบัตร/พาสปอร์ต",
+    privacy: "以上信息仅用于预约及就您的事务与您联系，仅本店工作人员可查看，并会在预约日期后 30 天内自动删除。" }
 };
 
 const ICONS = {
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   drag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg>',
   hand: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V6a2 2 0 1 1 4 0v5M11 10V4a2 2 0 1 1 4 0v6M15 10V6a2 2 0 1 1 4 0v8a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.5-4a1.8 1.8 0 0 1 3-2L7 14"/></svg>',
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
   route: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></svg>'
 };
 /* รูปตัวอย่างงาน (ข้อมูลส่วนตัวเบลอแล้ว) ต้องอัปโหลด 2 ไฟล์นี้ไว้คู่กับ index.html */
@@ -502,7 +508,8 @@ function booking(c, x) {
   const hp = el("div", "hp", null, { "aria-hidden": "true" }), hl = el("label", null, u.f_hp);
   hl.insertAdjacentHTML("beforeend", '<input name="website" tabindex="-1" autocomplete="off">'); hp.append(hl);
   const sb = pill("solid sub", u.bk_submit); sb.type = "submit";
-  form.append(hp, sb);
+  const pv = el("p", "pv"); pv.innerHTML = ICONS.lock; pv.append(el("span", null, x.privacy));
+  form.append(hp, pv, sb);
   const h1 = el("h3", null, u.bk_step1), h2 = el("h3", null, u.bk_step2);
   async function load() {
     days.textContent = u.bk_loading;
