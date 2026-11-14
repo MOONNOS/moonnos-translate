@@ -26,8 +26,8 @@
   "nav_cta": "Chat on LINE",
   "hero": {
     "badge": "moonnos translate",
-    "title": "Document translation, legalization and certified copies, all in one place",
-    "text": "We translate official, academic and legal documents (Thai–English) and handle legalization filings at the Department of Consular Affairs. Based in Hua Hin, serving clients nationwide, with delivery by EMS.",
+    "title": "Translation, legalization, certified copies and marriage registration, all in one place",
+    "text": "We translate official, academic and legal documents (Thai–English), handle legalization filings at the Department of Consular Affairs, and arrange marriage registration with an interpreter and witnesses. Based in Hua Hin, serving clients nationwide, with delivery by EMS.",
     "primary": "Free consultation and price estimate",
     "secondary": {
       "label": "See pricing",
@@ -200,7 +200,7 @@
   "ui": {
     "html_lang": "en",
     "title": "Moonnos | Translation & Document Certification | Hua Hin",
-    "desc": "Thai–English translation, document certification and legalization filing at the Department of Consular Affairs. Based in Hua Hin, serving clients nationwide.",
+    "desc": "Thai–English translation, document certification, legalization filing at the Department of Consular Affairs, and marriage registration. Based in Hua Hin, serving clients nationwide.",
     "menu_aria": "Main menu",
     "burger_aria": "Menu",
     "lang_aria": "Choose language",
